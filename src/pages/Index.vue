@@ -1,14 +1,17 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
+    <Editor />
   </q-page>
 </template>
 
 <script>
+
+import Editor from '../components/Editor'
+
 export default {
-  name: 'PageIndex'
+  name: 'PageIndex',
+  components: {
+    Editor
+  }
 }
 </script>
