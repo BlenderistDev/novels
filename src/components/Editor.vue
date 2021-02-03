@@ -5,23 +5,20 @@ div
   v-stage(
     ref="stage"
     :config="configKonva"
+    @mousedown="hideTransform"
+    @touchstart="hideTransform"
   )
-    //-   @mousedown="handleStageMouseDown"
-    //- @touchstart="handleStageMouseDown"
     v-layer(rel="layer")
       v-circle(
         v-for="(circle, index) in circleList"
         :key="index"
         :config="circle"
-
-        @dragend="circleDragStop"
-        @dragstart="circleDragStart"
         @dragmove="circleUpdate"
+        @mousedown="handleStageMouseDown"
+        @touchstart="handleStageMouseDown"
+        @transformend="circleUpdate"
       )
-              //- @dragmove="dragmove"
-              //- @transformend="handleTransformEnd"
-      //- v-text(:config="text")
-      //- v-transformer(ref="transformer")
+      v-transformer(ref="transformer")
 </template>
 
 <script>
@@ -34,8 +31,6 @@ export default {
         width: window.innerWidth,
         height: window.innerHeight
       },
-      // text: [],
-      // circle: [],
       configCircle: {
         x: 200,
         y: 200,
@@ -45,8 +40,8 @@ export default {
         fill: 'red',
         stroke: 'black',
         strokeWidth: 4,
-        draggable: true
-        // name: 'circle'
+        draggable: true,
+        name: 'circle'
       }
     }
   },
@@ -56,66 +51,37 @@ export default {
       'textList',
       'imageList'
     ])
-    // text: function () {
-    //   return {
-    //     text: `
-    //       x: ${this.configCircle.x}
-    //       y: ${this.configCircle.y}
-    //       scaleX: ${this.configCircle.scaleX}
-    //       scaleY: ${this.configCircle.scaleY}
-    //       radius: ${this.configCircle.radius}
-    //     `,
-    //     x: this.configCircle.x - this.configCircle.radius,
-    //     y: this.configCircle.y + this.configCircle.radius
-    //   }
-    // }
   },
   methods: {
     ...mapMutations('editor', [
       'addCircle',
-      'circleUpdate',
-      'circleDragStart',
-      'circleDragStop'
+      'circleUpdate'
     ]),
-    // handleTransformEnd (e) {
-    //   this.configCircle.x = e.target.x()
-    //   this.configCircle.y = e.target.y()
-    //   this.configCircle.rotation = e.target.rotation()
-    //   this.configCircle.scaleX = e.target.scaleX()
-    //   this.configCircle.scaleY = e.target.scaleY()
-    // },
     handleStageMouseDown (e) {
-      // if (e.target === e.target.getStage()) {
-      //   const transformerNode = this.$refs.transformer.getNode()
-      //   transformerNode.nodes([])
-      //   // this.updateTransformer()
-      //   return
-      // }
-      // const clickedOnTransformer = e.target.getParent().className === 'Transformer'
-      // if (clickedOnTransformer) {
-      //   return
-      // }
-      // this.updateTransformer()
+      const clickedOnTransformer = e.target.getParent().className === 'Transformer'
+      if (clickedOnTransformer) {
+        return
+      }
+      this.updateTransformer(e.target)
     },
-    // updateTransformer () {
-    //   const transformerNode = this.$refs.transformer.getNode()
-    //   const stage = transformerNode.getStage()
+    updateTransformer (target) {
+      const transformerNode = this.$refs.transformer.getNode()
+      const stage = transformerNode.getStage()
+      const selectedNode = stage.findOne('.' + target.name())
 
-    //   const selectedNode = stage.findOne('.' + 'circle')
+      if (selectedNode === transformerNode.node()) {
+        return
+      }
 
-    //   if (selectedNode === transformerNode.node()) {
-    //     return
-    //   }
-
-    //   if (selectedNode) {
-    //     // attach to another node
-    //     transformerNode.nodes([selectedNode])
-    //   } else {
-    //     // remove transformer
-    //     transformerNode.nodes([])
-    //   }
-    //   transformerNode.getLayer().batchDraw()
-    // },
+      if (selectedNode) {
+        // attach to another node
+        transformerNode.nodes([selectedNode])
+      } else {
+        // remove transformer
+        transformerNode.nodes([])
+      }
+      transformerNode.getLayer().batchDraw()
+    },
     dragmove (e) {
       this.updateCircle({
         index: e.target.index,
@@ -124,7 +90,14 @@ export default {
     },
     addCNewCircle () {
       const circleConfig = { ...this.configCircle }
+      circleConfig.name = circleConfig.name + Date.now()
       this.addCircle(circleConfig)
+    },
+    hideTransform (e) {
+      if (e.target === e.target.getStage()) {
+        const transformerNode = this.$refs.transformer.getNode()
+        transformerNode.nodes([])
+      }
     }
   }
 }
