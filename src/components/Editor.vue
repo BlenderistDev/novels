@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   span {{circleList}}
-  span(@click="addCNewCircle") Круг
+  ShapesBar
   v-stage(
     ref="stage"
     :config="configKonva"
@@ -9,11 +9,10 @@ div
     @touchstart="hideTransform"
   )
     v-layer(rel="layer")
-      v-circle(
+      shape(
         v-for="(circle, index) in circleList"
         :key="index"
-        :config="circle"
-        @dragmove="circleUpdate"
+        :shape="circle"
         @mousedown="handleStageMouseDown"
         @touchstart="handleStageMouseDown"
         @transformend="circleUpdate"
@@ -23,38 +22,29 @@ div
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import ShapesBar from './ShapesBar'
+import Shape from './Shape'
 
 export default {
+  components: {
+    Shape,
+    ShapesBar
+  },
   data () {
     return {
       configKonva: {
         width: window.innerWidth,
         height: window.innerHeight
-      },
-      configCircle: {
-        x: 200,
-        y: 200,
-        scaleX: 1,
-        scaleY: 1,
-        radius: 50,
-        fill: 'red',
-        stroke: 'black',
-        strokeWidth: 4,
-        draggable: true,
-        name: 'circle'
       }
     }
   },
   computed: {
     ...mapState('editor', [
-      'circleList',
-      'textList',
-      'imageList'
+      'circleList'
     ])
   },
   methods: {
     ...mapMutations('editor', [
-      'addCircle',
       'circleUpdate'
     ]),
     handleStageMouseDown (e) {
@@ -69,29 +59,11 @@ export default {
       const stage = transformerNode.getStage()
       const selectedNode = stage.findOne('.' + target.name())
 
-      if (selectedNode === transformerNode.node()) {
-        return
-      }
-
       if (selectedNode) {
-        // attach to another node
         transformerNode.nodes([selectedNode])
-      } else {
-        // remove transformer
-        transformerNode.nodes([])
       }
+      // лимитирует перерисовку
       transformerNode.getLayer().batchDraw()
-    },
-    dragmove (e) {
-      this.updateCircle({
-        index: e.target.index,
-        attrs: e.target.attrs
-      })
-    },
-    addCNewCircle () {
-      const circleConfig = { ...this.configCircle }
-      circleConfig.name = circleConfig.name + Date.now()
-      this.addCircle(circleConfig)
     },
     hideTransform (e) {
       if (e.target === e.target.getStage()) {
