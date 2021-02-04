@@ -48,8 +48,7 @@ export default {
       'circleUpdate'
     ]),
     handleStageMouseDown (e) {
-      const clickedOnTransformer = e.target.getParent().className === 'Transformer'
-      if (clickedOnTransformer) {
+      if (e.target.getParent().className === 'Transformer') {
         return
       }
       this.updateTransformer(e.target)
