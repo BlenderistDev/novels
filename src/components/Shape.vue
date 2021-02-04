@@ -10,10 +10,12 @@
 
 <script>
 import CircleShape from './Shapes/CircleShape'
+import ImageShape from './Shapes/ImageShape'
 
 export default {
   components: {
-    CircleShape
+    CircleShape,
+    ImageShape
   },
   props: {
     shape: Object

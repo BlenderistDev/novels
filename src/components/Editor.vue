@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  span {{circleList}}
+  span {{shapeList}}
   ShapesBar
   v-stage(
     ref="stage"
@@ -10,12 +10,12 @@ div
   )
     v-layer(rel="layer")
       shape(
-        v-for="(circle, index) in circleList"
+        v-for="(circle, index) in shapeList"
         :key="index"
         :shape="circle"
         @mousedown="handleStageMouseDown"
         @touchstart="handleStageMouseDown"
-        @transformend="circleUpdate"
+        @transformend="updateShape"
       )
       v-transformer(ref="transformer")
 </template>
@@ -40,12 +40,12 @@ export default {
   },
   computed: {
     ...mapState('editor', [
-      'circleList'
+      'shapeList'
     ])
   },
   methods: {
     ...mapMutations('editor', [
-      'circleUpdate'
+      'updateShape'
     ]),
     handleStageMouseDown (e) {
       if (e.target.getParent().className === 'Transformer') {

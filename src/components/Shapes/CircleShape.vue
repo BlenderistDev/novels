@@ -1,10 +1,10 @@
 <template lang="pug">
 v-circle(
   :config="config"
-  @dragmove="circleUpdate"
   @mousedown="$emit('mousedown', $event)"
   @touchstart="$emit('mousedown', $event)"
   @transformend="$emit('transformend', $event)"
+  @dragmove="updateShape"
 )
 </template>
 
@@ -17,8 +17,7 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'addCircle',
-      'circleUpdate'
+      'updateShape'
     ])
   }
 }
