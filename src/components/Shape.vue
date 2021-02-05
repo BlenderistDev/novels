@@ -11,11 +11,13 @@
 <script>
 import CircleShape from './Shapes/CircleShape'
 import ImageShape from './Shapes/ImageShape'
+import TextShape from './Shapes/TextShape'
 
 export default {
   components: {
     CircleShape,
-    ImageShape
+    ImageShape,
+    TextShape
   },
   props: {
     shape: Object

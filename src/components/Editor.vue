@@ -18,29 +18,36 @@ div
         @transformend="updateShape"
       )
       v-transformer(ref="transformer")
+  .overlay(v-if="showEditor")
+    vue-editor(v-model="content")
+    div Сохранить
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import ShapesBar from './ShapesBar'
 import Shape from './Shape'
+import { VueEditor } from 'vue2-editor'
 
 export default {
   components: {
     Shape,
-    ShapesBar
+    ShapesBar,
+    VueEditor
   },
   data () {
     return {
       configKonva: {
         width: window.innerWidth,
         height: window.innerHeight
-      }
+      },
+      content: ''
     }
   },
   computed: {
     ...mapState('editor', [
-      'shapeList'
+      'shapeList',
+      'showEditor'
     ])
   },
   methods: {
@@ -73,3 +80,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.overlay {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 500px;
+  height: 300px;
+}
+</style>

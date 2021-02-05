@@ -12,3 +12,13 @@ export function updateShape (state, e) {
     }
   })
 }
+
+export function showEditor (state) {
+  state.editorContent = ''
+  state.showEditor = true
+}
+
+export function hideEditor (state) {
+  state.editorContent = ''
+  state.showEditor = false
+}
