@@ -1,12 +1,12 @@
 <template lang="pug">
   span
-    v-text(
+    v-image(
       :config="config"
-      @mousedown="$emit('mousedown', $event)"
-      @touchstart="$emit('mousedown', $event)"
+      @mousedown="click($event)"
+      @touchstart="click($event)"
       @transformend="$emit('transformend', $event)"
       @dragmove="updateShape"
-      @dblclick="showEditor"
+      @dblclick="showWysiwyg($event)"
     )
 </template>
 
@@ -20,18 +20,33 @@ export default {
   },
   data () {
     return {
-      content: ''
+      content: '',
+      image: null
     }
   },
   props: {
     config: Object
   },
+  computed: {
+    imageConfig () {
+      const config = { ...this.config }
+      config.image = this.image
+      return config
+    }
+  },
   methods: {
     ...mapMutations('editor', [
       'updateShape',
-      'showEditor',
-      'hideEditor'
-    ])
+      'showWysiwyg',
+      'hideWysiwyg'
+    ]),
+    click (event) {
+      this.showWysiwyg({
+        event: event,
+        content: 'azaza'
+      })
+      this.$emit('mousedown', event)
+    }
   }
 }
 </script>

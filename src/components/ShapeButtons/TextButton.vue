@@ -17,13 +17,15 @@ export default {
         draggable: true,
         name: 'text',
         type: 'Text',
-        text: 'Some text on canvas'
+        text: 'Some text on canvas',
+        image: null
       }
     }
   },
   methods: {
     ...mapMutations('editor', [
-      'addShape'
+      'addShape',
+      'showWysiwyg'
     ]),
     addNewShape () {
       const config = { ...this.config }

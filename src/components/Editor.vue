@@ -18,22 +18,20 @@ div
         @transformend="updateShape"
       )
       v-transformer(ref="transformer")
-  .overlay(v-if="showEditor")
-    vue-editor(v-model="content")
-    div Сохранить
+  Wysiwyg
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import ShapesBar from './ShapesBar'
 import Shape from './Shape'
-import { VueEditor } from 'vue2-editor'
+import Wysiwyg from './Wysiwyg'
 
 export default {
   components: {
     Shape,
     ShapesBar,
-    VueEditor
+    Wysiwyg
   },
   data () {
     return {
@@ -80,13 +78,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.overlay {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  width: 500px;
-  height: 300px;
-}
-</style>
