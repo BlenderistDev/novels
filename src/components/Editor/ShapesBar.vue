@@ -6,8 +6,6 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
     CircleButton
   .shape-bar__item
     TextButton
-//- div
-
 </template>
 
 <script>
