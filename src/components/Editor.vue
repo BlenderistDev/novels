@@ -17,7 +17,7 @@ div
         @touchstart="handleStageMouseDown"
         @transformend="updateShape"
       )
-      v-transformer(ref="transformer")
+      Transformer(ref="transformer")
   Wysiwyg
 </template>
 
@@ -26,12 +26,14 @@ import { mapState, mapMutations } from 'vuex'
 import ShapesBar from './ShapesBar'
 import Shape from './Shape'
 import Wysiwyg from './Wysiwyg'
+import Transformer from './Transformer'
 
 export default {
   components: {
     Shape,
     ShapesBar,
-    Wysiwyg
+    Wysiwyg,
+    Transformer
   },
   data () {
     return {
@@ -48,32 +50,15 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'updateShape',
-      'hideWysiwyg'
+      'updateShape'
     ]),
-    handleStageMouseDown (e) {
-      if (e.target.getParent().className === 'Transformer') {
-        return
+    handleStageMouseDown (event) {
+      if (event.target.getParent().className !== 'Transformer') {
+        this.$refs.transformer.updateTransformer(event)
       }
-      this.updateTransformer(e.target)
     },
-    updateTransformer (target) {
-      const transformerNode = this.$refs.transformer.getNode()
-      const stage = transformerNode.getStage()
-      const selectedNode = stage.findOne('.' + target.name())
-
-      if (selectedNode) {
-        transformerNode.nodes([selectedNode])
-      }
-      // лимитирует перерисовку
-      transformerNode.getLayer().batchDraw()
-    },
-    hideTransform (e) {
-      if (e.target === e.target.getStage()) {
-        const transformerNode = this.$refs.transformer.getNode()
-        transformerNode.nodes([])
-        this.hideWysiwyg()
-      }
+    hideTransform (event) {
+      this.$refs.transformer.hideTransform(event)
     }
   }
 }
