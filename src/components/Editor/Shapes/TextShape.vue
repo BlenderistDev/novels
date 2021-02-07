@@ -16,21 +16,8 @@ export default {
   components: {
     VueEditor
   },
-  data () {
-    return {
-      content: '',
-      image: null
-    }
-  },
   props: {
     config: Object
-  },
-  computed: {
-    imageConfig () {
-      const config = { ...this.config }
-      config.image = this.image
-      return config
-    }
   },
   methods: {
     ...mapMutations('editor', [
