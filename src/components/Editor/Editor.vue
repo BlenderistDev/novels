@@ -3,7 +3,6 @@ div
   ShapesBar
   span {{shapeList}}
   v-stage(
-    ref="stage"
     :config="configKonva"
     @mousedown="hideTransform"
     @touchstart="hideTransform"
