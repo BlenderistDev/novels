@@ -4,7 +4,6 @@ export function addShape (state, config) {
 
 export function addText (state, config) {
   state.wysiwygTarget = addShape(state, config) - 1
-  state.showEditor = true
   state.wysiwygContent = ''
 }
 
@@ -30,12 +29,11 @@ export function updateTextShape (state, { key, image, text }) {
 
 export function hideWysiwyg (state) {
   state.wysiwygContent = ''
-  state.showEditor = false
+  state.wysiwygTarget = null
 }
+
 export function showWysiwyg (state, { event, content }) {
-  console.log(content)
   state.wysiwygContent = content
-  state.showEditor = true
   state.wysiwygTarget = event.target.index
 }
 

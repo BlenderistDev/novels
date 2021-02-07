@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  .overlay(v-if="showEditor")
+  .overlay(v-if="wysiwygTarget !== null")
     vue-editor(v-model="content")
 </template>
 
@@ -22,7 +22,7 @@ export default {
       }
     },
     ...mapState('editor', [
-      'showEditor'
+      'wysiwygTarget'
     ])
   },
   methods: {
@@ -41,6 +41,5 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
-  /* height: 300px; */
 }
 </style>
