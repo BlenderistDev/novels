@@ -2,11 +2,6 @@
 div
   .overlay(v-if="showEditor")
     vue-editor(v-model="content")
-    q-btn(
-       color="primary"
-       label="Сохранить"
-       @click="save"
-    )
 </template>
 
 <script>
@@ -36,10 +31,7 @@ export default {
     ]),
     ...mapActions('editor', [
       'setWysiwygContent'
-    ]),
-    save () {
-      this.hideWysiwyg()
-    }
+    ])
   }
 }
 </script>

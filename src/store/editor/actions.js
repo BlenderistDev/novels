@@ -10,8 +10,9 @@ export function setWysiwygContent ({ commit, state }, content) {
       }).then((canvas) => {
         const shapeConfig = { ...shape }
         shapeConfig.image = canvas
-        commit('updateShapeImage', {
+        commit('updateTextShape', {
           image: canvas,
+          text: content,
           key: state.wysiwygTarget
         })
         // shape.image(canvas)

@@ -17,20 +17,20 @@ export default {
         draggable: true,
         name: 'text',
         type: 'Text',
-        text: 'Some text on canvas',
+        text: '',
         image: null
       }
     }
   },
   methods: {
     ...mapMutations('editor', [
-      'addShape',
+      'addText',
       'showWysiwyg'
     ]),
     addNewShape () {
       const config = { ...this.config }
       config.name = config.name + Date.now()
-      this.addShape(config)
+      this.addText(config)
     }
   }
 }

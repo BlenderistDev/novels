@@ -1,6 +1,11 @@
 export function addShape (state, config) {
-  state.wysiwygTarget = state.shapeList.push(config) - 1
+  return state.shapeList.push(config)
+}
+
+export function addText (state, config) {
+  state.wysiwygTarget = addShape(state, config) - 1
   state.showEditor = true
+  state.wysiwygContent = ''
 }
 
 export function updateShape (state, e) {
@@ -14,30 +19,26 @@ export function updateShape (state, e) {
   })
 }
 
-export function updateShapeImage (state, { key, image }) {
+export function updateTextShape (state, { key, image, text }) {
   state.shapeList.forEach((shape, index) => {
     if (key === index) {
       shape.image = image
+      shape.text = text
     }
   })
 }
 
+export function hideWysiwyg (state) {
+  state.wysiwygContent = ''
+  state.showEditor = false
+}
 export function showWysiwyg (state, { event, content }) {
-  state.wysiwygTarget = event.target.index
+  console.log(content)
   state.wysiwygContent = content
   state.showEditor = true
-}
-
-export function hideWysiwyg (state) {
-  state.wysiwigContent = ''
-  state.showEditor = false
+  state.wysiwygTarget = event.target.index
 }
 
 export function setWysiwygContent (state, content) {
-  state.wysiwigContent = content
-  // state.shapeList.forEach((shape, index) => {
-  //   if (index === state.wysiwygTarget) {
-  //     shape.text = content
-  //   }
-  // })
+  state.wysiwygContent = content
 }

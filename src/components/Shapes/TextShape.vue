@@ -5,7 +5,6 @@
     @touchstart="click($event)"
     @transformend="$emit('transformend', $event)"
     @dragmove="updateShape"
-    @dblclick="showWysiwyg($event)"
   )
 </template>
 
@@ -42,7 +41,7 @@ export default {
     click (event) {
       this.showWysiwyg({
         event: event,
-        content: 'azaza'
+        content: this.config.text
       })
       this.$emit('mousedown', event)
     }

@@ -38,19 +38,18 @@ export default {
       configKonva: {
         width: window.innerWidth,
         height: window.innerHeight
-      },
-      content: ''
+      }
     }
   },
   computed: {
     ...mapState('editor', [
-      'shapeList',
-      'showEditor'
+      'shapeList'
     ])
   },
   methods: {
     ...mapMutations('editor', [
-      'updateShape'
+      'updateShape',
+      'hideWysiwyg'
     ]),
     handleStageMouseDown (e) {
       if (e.target.getParent().className === 'Transformer') {
@@ -73,6 +72,7 @@ export default {
       if (e.target === e.target.getStage()) {
         const transformerNode = this.$refs.transformer.getNode()
         transformerNode.nodes([])
+        this.hideWysiwyg()
       }
     }
   }
