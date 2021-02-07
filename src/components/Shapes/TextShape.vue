@@ -1,13 +1,12 @@
 <template lang="pug">
-  span
-    v-image(
-      :config="config"
-      @mousedown="click($event)"
-      @touchstart="click($event)"
-      @transformend="$emit('transformend', $event)"
-      @dragmove="updateShape"
-      @dblclick="showWysiwyg($event)"
-    )
+  v-image(
+    :config="config"
+    @mousedown="click($event)"
+    @touchstart="click($event)"
+    @transformend="$emit('transformend', $event)"
+    @dragmove="updateShape"
+    @dblclick="showWysiwyg($event)"
+  )
 </template>
 
 <script>

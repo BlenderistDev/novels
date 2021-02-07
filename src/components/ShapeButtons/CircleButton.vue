@@ -1,5 +1,5 @@
 <template lang="pug">
-  span(@click="addNewShape") Круг
+  div(@click="addNewShape") Круг
 </template>
 
 <script>

@@ -1,8 +1,13 @@
 <template lang="pug">
-div
-  ImageButton
-  CircleButton
-  TextButton
+div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
+  .shape-bar__item
+    ImageButton
+  .shape-bar__item
+    CircleButton
+  .shape-bar__item
+    TextButton
+//- div
+
 </template>
 
 <script>
@@ -18,3 +23,29 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.shape-bar
+  box-sizing: border-box
+  &__item
+    box-sizing: border-box
+    cursor: pointer
+    margin: 0 20px
+    font-weight: 500
+    position: relative
+    &::after
+      display: block
+      content: ""
+      position: absolute
+      right: 0
+      bottom: 0
+      left: 0
+      height: 1px
+      background-color: #fff
+      transform: scale(0)
+      transition: transform .2s linear
+    &:hover
+      &::after
+        transform: scale(1)
+        transition: transform .2s linear
+</style>

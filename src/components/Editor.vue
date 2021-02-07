@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  span {{shapeList}}
   ShapesBar
+  span {{shapeList}}
   v-stage(
     ref="stage"
     :config="configKonva"

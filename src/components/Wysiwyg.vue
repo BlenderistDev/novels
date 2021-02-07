@@ -2,7 +2,11 @@
 div
   .overlay(v-if="showEditor")
     vue-editor(v-model="content")
-    div(@click="save") Сохранить
+    q-btn(
+       color="primary"
+       label="Сохранить"
+       @click="save"
+    )
 </template>
 
 <script>

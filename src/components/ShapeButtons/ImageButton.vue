@@ -1,13 +1,25 @@
 <template lang="pug">
-span
-  span(
-    @click="showForm = true"
-  ) Картинка
-  span(v-if="showForm")
-    input(
+  div.image-btn
+    | Картинка
+    q-popup-edit(
       v-model="imageSrc"
+      color="grey-10"
     )
-    span(@click="addNewShape") Добавить
+      q-input(
+        color="grey-10"
+        v-model="imageSrc"
+        dense
+        autofocus
+        hint="Добаьте ссылку на картинку"
+      )
+        q-btn(
+          flat
+          dense
+          color="positive"
+          icon="check_circle"
+          @click="addNewShape"
+          :disable="imageSrc"
+        )
 </template>
 
 <script>
