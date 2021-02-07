@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(@click="addNewShape") Текст
+div(@click="addNewShape") Текст
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
         y: 200,
         scaleX: 1,
         scaleY: 1,
-        editable: true,
         draggable: true,
         name: 'text',
         type: 'Text',
@@ -24,8 +23,7 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'addText',
-      'showWysiwyg'
+      'addText'
     ]),
     addNewShape () {
       const config = { ...this.config }
