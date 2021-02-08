@@ -1,22 +1,25 @@
 <template lang="pug">
 div
   ShapesBar
-  span {{shapeList}}
-  v-stage(
-    :config="configKonva"
-    @mousedown="hideTransform"
-    @touchstart="hideTransform"
-  )
-    v-layer(rel="layer")
-      shape(
-        v-for="(circle, index) in shapeList"
-        :key="index"
-        :shape="circle"
-        @mousedown="handleStageMouseDown"
-        @touchstart="handleStageMouseDown"
-        @transformend="updateShape"
+  .row
+    .col-3
+      Properties(:shape="configKonva")
+    .col-6
+      v-stage(
+        :config="configKonva"
+        @mousedown="hideTransform"
+        @touchstart="hideTransform"
       )
-      Transformer(ref="transformer")
+        v-layer(rel="layer")
+          shape(
+            v-for="(circle, index) in shapeList"
+            :key="index"
+            :shape="circle"
+            @mousedown="handleStageMouseDown"
+            @touchstart="handleStageMouseDown"
+            @transformend="updateShape"
+          )
+          Transformer(ref="transformer")
   Wysiwyg
 </template>
 
@@ -26,19 +29,22 @@ import ShapesBar from './ShapesBar'
 import Shape from './Shape'
 import Wysiwyg from './Wysiwyg'
 import Transformer from './Transformer'
+import Properties from './Properties'
 
 export default {
   components: {
     Shape,
     ShapesBar,
     Wysiwyg,
-    Transformer
+    Transformer,
+    Properties
   },
   data () {
     return {
       configKonva: {
-        width: window.innerWidth,
-        height: window.innerHeight
+        width: window.innerWidth * 0.7,
+        height: window.innerHeight,
+        type: 'Stage'
       }
     }
   },
@@ -62,3 +68,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.col-3 {
+  background-color: beige;
+}
+</style>

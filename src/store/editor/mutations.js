@@ -2,6 +2,10 @@ export function addShape (state, config) {
   return state.shapeList.push(config)
 }
 
+export function setShapeList (state, shapeList) {
+  state.shapeList = shapeList
+}
+
 export function addText (state, config) {
   state.wysiwygTarget = addShape(state, config) - 1
   state.wysiwygContent = ''
