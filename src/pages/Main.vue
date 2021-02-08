@@ -1,0 +1,17 @@
+<template lang="pug">
+  div.main-page
+    <Header/>
+</template>
+
+<script>
+import Header from '../components/MainPage/Header'
+
+export default {
+  components: {
+    Header
+  }
+}
+</script>
+
+<style lang="sass">
+</style>

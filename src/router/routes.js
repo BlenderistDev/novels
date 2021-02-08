@@ -8,6 +8,12 @@ const routes = [
     ]
   },
 
+  {
+    path: '/list',
+    component: () => import('pages/Main.vue'),
+    name: 'novels-list'
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {
