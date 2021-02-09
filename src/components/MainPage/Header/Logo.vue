@@ -1,6 +1,6 @@
 <template lang="pug">
   .logo
-    router-link(:to="{ name: 'novels-list'}") Novels
+    router-link(to="/") Novels
 </template>
 
 <script>
