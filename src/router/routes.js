@@ -9,21 +9,20 @@ const routes = [
   },
 
   {
-    path: '/login',
+    path: '/user',
     component: () => import('layouts/PagesLayout.vue'),
     children: [
-      { path: '/login', component: () => import('pages/Login.vue') }
-    ],
-    name: 'login'
-  },
-
-  {
-    path: '/registration',
-    component: () => import('layouts/PagesLayout.vue'),
-    children: [
-      { path: '/registration', component: () => import('pages/Registration.vue') }
-    ],
-    name: 'registration'
+      {
+        path: 'login',
+        component: () => import('pages/Login.vue'),
+        name: 'login'
+      },
+      {
+        path: 'registration',
+        component: () => import('pages/Registration.vue'),
+        name: 'registration'
+      }
+    ]
   },
 
   {
