@@ -1,7 +1,7 @@
 <template lang="pug">
 draggable(v-model="shapeList")
   transition-group
-    div(v-for="(shape, index) in shapeList") {{shape.name}}
+    div(v-for="(shape, index) in shapeList" :key="index") {{shape.name}}
 </template>
 
 <script>
