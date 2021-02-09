@@ -1,8 +1,9 @@
 <template lang="pug">
   nav.nav
-    each link in ['Главная', 'Библиотека', 'Жанры']
-      a(href="#").nav__link
-        span= link
+    router-link(to="/").nav__link
+      span Главная
+    router-link(:to="{ name: 'editor' }").nav__link
+      span Редактор
 </template>
 
 <script>
@@ -13,6 +14,7 @@ export default {
 
 <style lang="sass">
 @import '../../../css/mixins'
+@import '../../../css/_variables'
 
 .nav
   box-sizing: border-box
@@ -27,11 +29,9 @@ export default {
   &__link
     box-sizing: border-box
     font-size: 14px
-    font-weight: 700
-    color: #222222
-    text-transform: uppercase
+    font-weight: 600
+    color: $text-primary
     text-decoration: none
-    letter-spacing: .02em
     @include media-tablet
       padding: 0 10px
     @include media-laptop

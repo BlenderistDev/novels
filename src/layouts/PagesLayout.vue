@@ -1,7 +1,8 @@
 <template lang="pug">
   .page
     <Header/>
-    <router-view />
+    main.content-container
+      <router-view />
 </template>
 
 <script>
@@ -15,4 +16,10 @@ export default {
 </script>
 
 <style lang="sass">
+.content-container
+  box-sizing: border-box
+  width: 100%
+  max-width: 1240px
+  padding: 0 20px
+  margin: 0 auto
 </style>

@@ -25,8 +25,6 @@ export default {
     color: #ff0815
     transition: color .3s linear
   @include media-tablet
-    margin-right: 40px
   @include media-laptop
-    margin-right: 80px
 
 </style>
