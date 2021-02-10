@@ -29,9 +29,12 @@ const routes = [
     path: '/editor',
     component: () => import('layouts/EditorLayout.vue'),
     children: [
-      { path: '/editor', component: () => import('pages/Index.vue') }
-    ],
-    name: 'editor'
+      {
+        path: 'editor',
+        component: () => import('pages/Index.vue'),
+        name: 'editor'
+      }
+    ]
   },
 
   {
