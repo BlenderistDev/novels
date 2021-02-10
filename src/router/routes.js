@@ -2,20 +2,38 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PagesLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '/', component: () => import('pages/Main.vue') }
     ]
   },
 
   {
-    path: '/list',
-    component: () => import('pages/Main.vue'),
-    name: 'novels-list'
+    path: '/user',
+    component: () => import('layouts/PagesLayout.vue'),
+    children: [
+      {
+        path: 'login',
+        component: () => import('pages/Login.vue'),
+        name: 'login'
+      },
+      {
+        path: 'registration',
+        component: () => import('pages/Registration.vue'),
+        name: 'registration'
+      }
+    ]
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  {
+    path: '/editor',
+    component: () => import('layouts/EditorLayout.vue'),
+    children: [
+      { path: '/editor', component: () => import('pages/Index.vue') }
+    ],
+    name: 'editor'
+  },
+
   {
     path: '*',
     component: () => import('pages/Error404.vue')
