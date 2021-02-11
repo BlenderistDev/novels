@@ -3,13 +3,14 @@ div
   ShapesBar
   .row
     .col-3
-      Properties(:shape="configKonva")
+      Properties(:shape="stageConfig")
     .col-6
       v-stage(
-        :config="configKonva"
+        :config="stageConfig"
         @mousedown="hideTransform"
         @touchstart="hideTransform"
       )
+        Background
         v-layer(rel="layer")
           shape(
             v-for="(circle, index) in shapeList"
@@ -30,6 +31,7 @@ import Shape from './Shape'
 import Wysiwyg from './Wysiwyg'
 import Transformer from './Transformer'
 import Properties from './Properties'
+import Background from './Background'
 
 export default {
   components: {
@@ -37,25 +39,29 @@ export default {
     ShapesBar,
     Wysiwyg,
     Transformer,
-    Properties
+    Properties,
+    Background
   },
-  data () {
-    return {
-      configKonva: {
+  created () {
+    this.setStageConfig(this.configKonva)
+  },
+  computed: {
+    ...mapState('editor', [
+      'shapeList',
+      'stageConfig'
+    ]),
+    configKonva () {
+      return {
         width: window.innerWidth * 0.7,
         height: window.innerHeight,
         type: 'Stage'
       }
     }
   },
-  computed: {
-    ...mapState('editor', [
-      'shapeList'
-    ])
-  },
   methods: {
     ...mapMutations('editor', [
-      'updateShape'
+      'updateShape',
+      'setStageConfig'
     ]),
     handleStageMouseDown (event) {
       if (event.target.getParent().className !== 'Transformer') {

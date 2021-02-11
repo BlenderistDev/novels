@@ -1,5 +1,6 @@
 <template lang="pug">
 component(
+  v-if="shape.type"
   :is="shapeComponent"
   :config="shape"
 )

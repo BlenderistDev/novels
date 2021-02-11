@@ -44,3 +44,11 @@ export function showWysiwyg (state, { event, content }) {
 export function setWysiwygContent (state, content) {
   state.wysiwygContent = content
 }
+
+export function setBackgroundImage (state, image) {
+  state.backgroundImage = image
+}
+
+export function setStageConfig (state, config) {
+  state.stageConfig = config
+}

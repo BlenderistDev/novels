@@ -1,31 +1,17 @@
 <template lang="pug">
-draggable(v-model="shapeList")
-  transition-group
-    div(v-for="(shape, index) in shapeList" :key="shape.name") {{shape.name}}
+div
+  BackgroundImage
+  ShapeList
 </template>
 
 <script>
-import draggable from 'vuedraggable'
-import { mapMutations } from 'vuex'
+import ShapeList from './Parameters/ShapeList'
+import BackgroundImage from './Parameters/BackgroundImage'
 
 export default {
   components: {
-    draggable
-  },
-  computed: {
-    shapeList: {
-      get () {
-        return this.$store.state.editor.shapeList
-      },
-      set (value) {
-        this.setShapeList(value)
-      }
-    }
-  },
-  methods: {
-    ...mapMutations('editor', [
-      'setShapeList'
-    ])
+    ShapeList,
+    BackgroundImage
   }
 }
 </script>
