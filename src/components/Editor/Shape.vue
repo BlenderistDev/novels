@@ -2,13 +2,14 @@
   component(
     :is="shapeComponent"
     :config="shape"
-    @mousedown="$emit('mousedown', $event)"
-    @touchstart="$emit('mousedown', $event)"
-    @transformend="$emit('transformend', $event)"
+    @mousedown="setSelectedShape(shape)"
+    @touchstart="setSelectedShape(shape)"
+    @transformend="updateShape($event)"
   )
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import CircleShape from './Shapes/CircleShape'
 import ImageShape from './Shapes/ImageShape'
 import TextShape from './Shapes/TextShape'
@@ -26,6 +27,12 @@ export default {
     shapeComponent () {
       return `${this.shape.type}Shape`
     }
+  },
+  methods: {
+    ...mapMutations('editor', [
+      'updateShape',
+      'setSelectedShape'
+    ])
   }
 }
 </script>

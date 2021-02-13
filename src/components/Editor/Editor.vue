@@ -3,24 +3,17 @@ div
   ShapesBar
   .row
     .col-3
-      Properties(:shape="stageConfig")
+      Properties
     .col-6
-      v-stage(
-        :config="stageConfig"
-        @mousedown="hideTransform"
-        @touchstart="hideTransform"
-      )
+      v-stage(:config="stageConfig")
         Background
-        v-layer(rel="layer")
+        v-layer
           shape(
-            v-for="(circle, index) in shapeList"
+            v-for="(shape, index) in shapeList"
             :key="index"
-            :shape="circle"
-            @mousedown="handleStageMouseDown"
-            @touchstart="handleStageMouseDown"
-            @transformend="updateShape"
+            :shape="shape"
           )
-          Transformer(ref="transformer")
+          Transformer
   Wysiwyg
 </template>
 
@@ -44,6 +37,7 @@ export default {
   },
   created () {
     this.setStageConfig(this.configKonva)
+    this.setSelectedShape(this.configKonva)
   },
   computed: {
     ...mapState('editor', [
@@ -60,17 +54,9 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'updateShape',
-      'setStageConfig'
-    ]),
-    handleStageMouseDown (event) {
-      if (event.target.getParent().className !== 'Transformer') {
-        this.$refs.transformer.updateTransformer(event)
-      }
-    },
-    hideTransform (event) {
-      this.$refs.transformer.hideTransform(event)
-    }
+      'setStageConfig',
+      'setSelectedShape'
+    ])
   }
 }
 </script>

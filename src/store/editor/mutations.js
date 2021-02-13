@@ -52,3 +52,7 @@ export function setBackgroundImage (state, image) {
 export function setStageConfig (state, config) {
   state.stageConfig = config
 }
+
+export function setSelectedShape (state, index) {
+  state.selectedShape = index
+}

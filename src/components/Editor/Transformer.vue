@@ -3,18 +3,28 @@ v-transformer(ref="transformer")
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
+  watch: {
+    selectedShape: function () {
+      if (this.selectedShape && this.selectedShape.type !== 'Stage') {
+        this.updateTransformer()
+      } else {
+        this.hideTransform()
+      }
+    }
+  },
   methods: {
     ...mapMutations('editor', [
-      'updateShape',
-      'hideWysiwyg'
+      'hideWysiwyg',
+      'setSelectedShape'
     ]),
-    updateTransformer (event) {
+    updateTransformer () {
       const transformerNode = this.$refs.transformer.getNode()
       const stage = transformerNode.getStage()
-      const selectedNode = stage.findOne('.' + event.target.name())
+      const selectedNode = stage.findOne('.' + this.selectedShape.name)
+
       if (selectedNode.attrs.type !== 'Text') {
         this.hideWysiwyg()
       }
@@ -25,12 +35,17 @@ export default {
       transformerNode.getLayer().batchDraw()
     },
     hideTransform (e) {
-      if (e.target === e.target.getStage()) {
-        const transformerNode = this.$refs.transformer.getNode()
-        transformerNode.nodes([])
-        this.hideWysiwyg()
-      }
+      const transformerNode = this.$refs.transformer.getNode()
+      transformerNode.nodes([])
+      this.hideWysiwyg()
+      this.setSelectedShape(this.stageConfig)
     }
+  },
+  computed: {
+    ...mapState('editor', [
+      'stageConfig',
+      'selectedShape'
+    ])
   }
 }
 </script>

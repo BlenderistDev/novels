@@ -4,6 +4,7 @@ export default function () {
     wysiwygContent: '',
     wysiwygTarget: null,
     backgroundImage: '',
-    stageConfig: {}
+    stageConfig: {},
+    selectedShape: null
   }
 }

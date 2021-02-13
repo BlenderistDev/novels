@@ -1,24 +1,27 @@
 <template lang="pug">
 component(
-  v-if="shape.type"
+  v-if="selectedShape.type"
   :is="shapeComponent"
-  :config="shape"
+  :config="selectedShape"
 )
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import StageParameters from './ShapeParameters/StageParameters'
+import CircleParameters from './ShapeParameters/CircleParameters'
 
 export default {
   components: {
-    StageParameters
-  },
-  props: {
-    shape: Object
+    StageParameters,
+    CircleParameters
   },
   computed: {
+    ...mapState('editor', [
+      'selectedShape'
+    ]),
     shapeComponent () {
-      return `${this.shape.type}Parameters`
+      return `${this.selectedShape.type}Parameters`
     }
   }
 }
