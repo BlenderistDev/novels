@@ -1,10 +1,17 @@
 <template lang="pug">
-  h1 Main page
+div
+  Slider
+  .content-container
+    h1 main
 </template>
 
 <script>
+import Slider from '../components/MainPage/Slider'
 
 export default {
+  components: {
+    Slider
+  }
 }
 </script>
 
