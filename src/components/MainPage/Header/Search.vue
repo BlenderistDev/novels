@@ -13,8 +13,8 @@ export default {
 </script>
 
 <style lang="sass">
-@import '../../../css/mixins'
-@import '../../../css/_variables'
+@import '../../../css/_utils/mixins'
+@import '../../../css/_utils/variables'
 .search
   box-sizing: border-box
   display: flex

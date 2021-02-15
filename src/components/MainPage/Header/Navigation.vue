@@ -2,6 +2,8 @@
   nav.nav
     router-link(to="/").nav__link
       span Главная
+    router-link(:to="{ name: 'categories', category: 'test' }").nav__link
+      span Список категорий
     router-link(:to="{ name: 'editor' }").nav__link
       span Редактор
 </template>
@@ -13,8 +15,8 @@ export default {
 </script>
 
 <style lang="sass">
-@import '../../../css/mixins'
-@import '../../../css/_variables'
+@import '../../../css/_utils/mixins'
+@import '../../../css/_utils/variables'
 
 .nav
   box-sizing: border-box

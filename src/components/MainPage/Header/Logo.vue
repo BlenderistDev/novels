@@ -10,7 +10,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '../../../css/mixins'
+@import '../../../css/_utils/mixins'
 .logo
   box-sizing: border-box
   font-size: 20px

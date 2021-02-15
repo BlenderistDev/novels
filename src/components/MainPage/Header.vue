@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '../../css/mixins'
+@import '../../css/_utils/mixins'
 
 .header
   box-sizing: border-box
