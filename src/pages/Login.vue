@@ -1,5 +1,6 @@
 <template lang="pug">
-  h1 Login
+  main.content-container
+    h1 login
 </template>
 
 <script>
