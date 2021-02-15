@@ -1,7 +1,7 @@
 <template lang="pug">
 v-image(
   :config="imageConfig"
-  @dragmove="updateShape"
+  @dragmove="updateShapeFromEvent"
   @mousedown="$emit('mousedown', $event)"
   @touchstart="$emit('mousedown', $event)"
   @transformend="$emit('transformend', $event)"
@@ -9,7 +9,7 @@ v-image(
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -29,8 +29,10 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'addShape',
-      'updateShape'
+      'addShape'
+    ]),
+    ...mapActions('editor', [
+      'updateShapeFromEvent'
     ])
   },
   created () {

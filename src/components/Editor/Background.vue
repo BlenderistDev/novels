@@ -2,7 +2,7 @@
 v-layer
   v-image(
     :config="config"
-    @mousedown="setSelectedShape(stageConfig)"
+    @mousedown="setSelectedShape('')"
   )
 </template>
 

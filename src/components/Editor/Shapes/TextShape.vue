@@ -4,12 +4,12 @@
     @mousedown="click($event)"
     @touchstart="click($event)"
     @transformend="$emit('transformend', $event)"
-    @dragmove="updateShape"
+    @dragmove="updateShapeFromEvent"
   )
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 import { VueEditor } from 'vue2-editor'
 
 export default {
@@ -21,9 +21,11 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'updateShape',
       'showWysiwyg',
       'hideWysiwyg'
+    ]),
+    ...mapActions('editor', [
+      'updateShapeFromEvent'
     ]),
     click (event) {
       this.showWysiwyg({

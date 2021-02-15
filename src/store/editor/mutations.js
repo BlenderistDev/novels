@@ -1,5 +1,8 @@
+import _ from 'lodash'
+
 export function addShape (state, config) {
-  return state.shapeList.push(config)
+  state.shapeList.push(config)
+  state.selectedShapeName = config.name
 }
 
 export function setShapeList (state, shapeList) {
@@ -11,15 +14,11 @@ export function addText (state, config) {
   state.wysiwygContent = ''
 }
 
-export function updateShape (state, e) {
-  state.shapeList.forEach((shape, index) => {
-    if (index === e.target.index) {
-      shape.x = e.target.attrs.x
-      shape.y = e.target.attrs.y
-      shape.scaleX = e.target.attrs.scaleX
-      shape.scaleY = e.target.attrs.scaleY
-    }
-  })
+export function updateShape (state, config) {
+  const shapeIndex = _.findIndex(state.shapeList, { name: config.name })
+  const shapeList = [...state.shapeList]
+  shapeList[shapeIndex] = config
+  state.shapeList = shapeList
 }
 
 export function updateTextShape (state, { key, image, text }) {
@@ -53,6 +52,6 @@ export function setStageConfig (state, config) {
   state.stageConfig = config
 }
 
-export function setSelectedShape (state, index) {
-  state.selectedShape = index
+export function setSelectedShape (state, name) {
+  state.selectedShapeName = name
 }

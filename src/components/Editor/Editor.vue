@@ -11,7 +11,7 @@ div
           shape(
             v-for="(shape, index) in shapeList"
             :key="index"
-            :shape="shape"
+            :shapeName="shape.name"
           )
           Transformer
   Wysiwyg
@@ -37,7 +37,7 @@ export default {
   },
   created () {
     this.setStageConfig(this.configKonva)
-    this.setSelectedShape(this.configKonva)
+    this.setSelectedShape('')
   },
   computed: {
     ...mapState('editor', [

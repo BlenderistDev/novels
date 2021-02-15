@@ -1,13 +1,15 @@
 <template lang="pug">
-component(
-  v-if="selectedShape.type"
-  :is="shapeComponent"
-  :config="selectedShape"
-)
+div
+  div {{ selectedShape }}
+  component(
+    v-if="selectedShape"
+    :is="shapeComponent"
+  )
+  StageParameters(v-else)
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import StageParameters from './ShapeParameters/StageParameters'
 import CircleParameters from './ShapeParameters/CircleParameters'
 
@@ -17,11 +19,15 @@ export default {
     CircleParameters
   },
   computed: {
-    ...mapState('editor', [
+    ...mapGetters('editor', [
       'selectedShape'
     ]),
     shapeComponent () {
-      return `${this.selectedShape.type}Parameters`
+      if (this.selectedShape !== undefined) {
+        return `${this.selectedShape.type}Parameters`
+      } else {
+        return ''
+      }
     }
   }
 }

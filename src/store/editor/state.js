@@ -5,6 +5,6 @@ export default function () {
     wysiwygTarget: null,
     backgroundImage: '',
     stageConfig: {},
-    selectedShape: null
+    selectedShapeName: ''
   }
 }

@@ -15,10 +15,11 @@ export function setWysiwygContent ({ commit, state }, content) {
           text: content,
           key: state.wysiwygTarget
         })
-        // shape.image(canvas)
-        // layer.batchDraw()
       })
-      // shape.text = content
     }
   })
+}
+
+export function updateShapeFromEvent ({ commit }, e) {
+  commit('updateShape', e.target.attrs)
 }

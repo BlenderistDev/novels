@@ -4,7 +4,7 @@ v-circle(
   @mousedown="$emit('mousedown', $event)"
   @touchstart="$emit('mousedown', $event)"
   @transformend="$emit('transformend', $event)"
-  @dragmove="updateShape"
+  @dragmove="updateShape({...$event.target.attrs})"
 )
 </template>
 

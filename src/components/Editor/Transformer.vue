@@ -3,7 +3,7 @@ v-transformer(ref="transformer")
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
   watch: {
@@ -38,12 +38,14 @@ export default {
       const transformerNode = this.$refs.transformer.getNode()
       transformerNode.nodes([])
       this.hideWysiwyg()
-      this.setSelectedShape(this.stageConfig)
+      this.setSelectedShape('')
     }
   },
   computed: {
     ...mapState('editor', [
-      'stageConfig',
+      'stageConfig'
+    ]),
+    ...mapGetters('editor', [
       'selectedShape'
     ])
   }

@@ -2,17 +2,18 @@
   component(
     :is="shapeComponent"
     :config="shape"
-    @mousedown="setSelectedShape(shape)"
-    @touchstart="setSelectedShape(shape)"
-    @transformend="updateShape($event)"
+    @mousedown="setSelectedShape(shape.name)"
+    @touchstart="setSelectedShape(shape.name)"
+    @transformend="updateShapeFromEvent($event)"
   )
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState, mapActions } from 'vuex'
 import CircleShape from './Shapes/CircleShape'
 import ImageShape from './Shapes/ImageShape'
 import TextShape from './Shapes/TextShape'
+import _ from 'lodash'
 
 export default {
   components: {
@@ -21,17 +22,23 @@ export default {
     TextShape
   },
   props: {
-    shape: Object
+    shapeName: String
   },
   computed: {
     shapeComponent () {
       return `${this.shape.type}Shape`
-    }
+    },
+    shape () {
+      return _.find(this.shapeList, { name: this.shapeName })
+    },
+    ...mapState('editor', ['shapeList'])
   },
   methods: {
     ...mapMutations('editor', [
-      'updateShape',
       'setSelectedShape'
+    ]),
+    ...mapActions('editor', [
+      'updateShapeFromEvent'
     ])
   }
 }

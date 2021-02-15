@@ -14,7 +14,7 @@ export default {
         scaleX: 1,
         scaleY: 1,
         radius: 50,
-        fill: 'red',
+        fill: '#f31212',
         stroke: 'black',
         strokeWidth: 4,
         draggable: true,
