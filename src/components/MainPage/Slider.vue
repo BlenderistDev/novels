@@ -42,7 +42,7 @@ export default {
   box-sizing: border-box
   width: 100%
   max-width: 1920px
-  margin: 0 auto
+  margin: 0 auto 90px
   position: relative
   & .swiper-wrapper,
   & .swiper-container
