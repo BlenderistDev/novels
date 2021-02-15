@@ -1,30 +1,35 @@
 <template lang="pug">
-input(type="color" v-model="color")
+div
+  div x
+    Number(propName="x")
+  div y
+    Number(propName="y")
+  div ScaleX
+    Number(propName="scaleX")
+  div ScaleY
+    Number(propName="scaleY")
+  div Rotation
+    Number(propName="rotation")
+  div Radius
+    Number(propName="radius")
+  div fill
+    Color(propName="fill")
+  div stroke
+    Color(propName="stroke")
+  div strokeWidth
+    NumberSlider(propName="strokeWidth")
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import Color from './Parameters/Color'
+import NumberSlider from './Parameters/NumberSlider'
+import Number from './Parameters/Number'
 
 export default {
-  computed: {
-    ...mapGetters('editor', [
-      'selectedShape'
-    ]),
-    color: {
-      get () {
-        return this.selectedShape.fill
-      },
-      set (color) {
-        const config = { ...this.selectedShape }
-        config.fill = color
-        this.updateShape(config)
-      }
-    }
-  },
-  methods: {
-    ...mapMutations('editor', [
-      'updateShape'
-    ])
+  components: {
+    Color,
+    NumberSlider,
+    Number
   }
 }
 </script>

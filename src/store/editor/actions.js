@@ -20,6 +20,6 @@ export function setWysiwygContent ({ commit, state }, content) {
   })
 }
 
-export function updateShapeFromEvent ({ commit }, e) {
-  commit('updateShape', e.target.attrs)
+export function updateShapeFromEvent ({ commit }, event) {
+  commit('updateShape', { ...event.target.attrs })
 }

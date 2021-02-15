@@ -15,7 +15,7 @@ export default {
         scaleY: 1,
         radius: 50,
         fill: '#f31212',
-        stroke: 'black',
+        stroke: '#000000',
         strokeWidth: 4,
         draggable: true,
         name: 'circle',
