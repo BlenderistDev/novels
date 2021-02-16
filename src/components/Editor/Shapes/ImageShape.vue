@@ -33,14 +33,22 @@ export default {
     ]),
     ...mapActions('editor', [
       'updateShapeFromEvent'
-    ])
+    ]),
+    loadImage () {
+      const image = new window.Image()
+      image.src = this.config.src
+      image.onload = () => {
+        this.image = image
+      }
+    }
+  },
+  watch: {
+    config () {
+      this.loadImage()
+    }
   },
   created () {
-    const image = new window.Image()
-    image.src = this.config.src
-    image.onload = () => {
-      this.image = image
-    }
+    this.loadImage()
   }
 }
 </script>

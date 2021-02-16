@@ -2,13 +2,13 @@
   header.header
     .header__inner
       .header__logo
-        <Logo/>
+        Logo
       .header__navigation
-        <Navigation/>
+        Navigation
       .header__search
-        <Search/>
+        Search
       .header__user-panel
-        <UserPanel/>
+        UserPanel
 </template>
 
 <script>
