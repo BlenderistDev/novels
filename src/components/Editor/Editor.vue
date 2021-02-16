@@ -14,7 +14,7 @@ div
             :shapeName="shape.name"
           )
           Transformer
-  Wysiwyg
+//- Wysiwyg
 </template>
 
 <script>
