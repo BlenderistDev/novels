@@ -28,7 +28,8 @@ export default {
         navigation: {
           nextEl: '.js-carousel-next',
           prevEl: '.js-carousel-prev'
-        }
+        },
+        loop: true
       }
     }
   }
@@ -36,12 +37,12 @@ export default {
 </script>
 
 <style lang="sass">
-@import '../../css/mixins'
+@import '../../css/_utils/mixins'
 .carousel
   box-sizing: border-box
   width: 100%
   max-width: 1920px
-  margin: 0 auto
+  margin: 0 auto 90px
   position: relative
   & .swiper-wrapper,
   & .swiper-container

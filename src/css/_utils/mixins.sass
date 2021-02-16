@@ -1,0 +1,9 @@
+@import './_variables'
+
+@mixin media-tablet
+  @media (min-width: $tablet)
+    @content
+
+@mixin media-laptop
+  @media (min-width: $sm-laptop)
+    @content

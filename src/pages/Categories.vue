@@ -1,11 +1,16 @@
 <template lang="pug">
   main.content-container
-    h1 Registraion
+    h1 Categories {{ category }}
 </template>
 
 <script>
 export default {
-
+  props: {
+    category: {
+      type: String,
+      require: true
+    }
+  }
 }
 </script>
 
