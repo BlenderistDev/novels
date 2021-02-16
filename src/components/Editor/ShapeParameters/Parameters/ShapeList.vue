@@ -1,7 +1,11 @@
 <template lang="pug">
 draggable(v-model="shapeList")
   transition-group
-    div(v-for="shape in shapeList" :key="shape.name") {{shape.name}}
+    div(
+      v-for="shape in shapeList"
+      :key="shape.name"
+      @click="setSelectedShape(shape.name)"
+    ) {{shape.name}}
 </template>
 
 <script>
@@ -24,7 +28,8 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'setShapeList'
+      'setShapeList',
+      'setSelectedShape'
     ])
   }
 }
