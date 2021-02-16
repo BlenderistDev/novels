@@ -12,11 +12,13 @@ div
 import { mapGetters } from 'vuex'
 import StageParameters from './ShapeParameters/StageParameters'
 import CircleParameters from './ShapeParameters/CircleParameters'
+import ImageParameters from './ShapeParameters/ImageParameters'
 
 export default {
   components: {
     StageParameters,
-    CircleParameters
+    CircleParameters,
+    ImageParameters
   },
   computed: {
     ...mapGetters('editor', [
