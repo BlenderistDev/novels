@@ -5,6 +5,8 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
   .shape-bar__item
     CircleButton
   .shape-bar__item
+    WysiwygButton
+  .shape-bar__item
     TextButton
 </template>
 
@@ -12,12 +14,14 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
 import CircleButton from './ShapeButtons/CircleButton'
 import ImageButton from './ShapeButtons/ImageButton'
 import TextButton from './ShapeButtons/TextButton'
+import WysiwygButton from './ShapeButtons/WysiwygButton'
 
 export default {
   components: {
     CircleButton,
     ImageButton,
-    TextButton
+    TextButton,
+    WysiwygButton
   }
 }
 </script>

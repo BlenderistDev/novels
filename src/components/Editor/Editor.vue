@@ -5,13 +5,14 @@ div
     .col-3
       Properties
     .col-6
-      v-stage(:config="stageConfig")
+      v-stage(:config="stageConfig" ref="stage")
         Background
         v-layer
           shape(
             v-for="(shape, index) in shapeList"
             :key="index"
             :shapeName="shape.name"
+            :stage="stage"
           )
           Transformer
 //- Wysiwyg
@@ -37,7 +38,6 @@ export default {
   },
   created () {
     this.setStageConfig(this.configKonva)
-    this.setSelectedShape('')
   },
   computed: {
     ...mapState('editor', [
@@ -50,12 +50,14 @@ export default {
         height: window.innerHeight,
         type: 'Stage'
       }
+    },
+    stage () {
+      return this.$refs.stage
     }
   },
   methods: {
     ...mapMutations('editor', [
-      'setStageConfig',
-      'setSelectedShape'
+      'setStageConfig'
     ])
   }
 }

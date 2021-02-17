@@ -22,6 +22,7 @@ export default {
     ImageParameters,
     TextParameters
   },
+  props: ['stage'],
   computed: {
     ...mapGetters('editor', [
       'selectedShape'

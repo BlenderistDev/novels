@@ -5,6 +5,7 @@
     @mousedown="setSelectedShape(shape.name)"
     @touchstart="setSelectedShape(shape.name)"
     @transformend="updateShapeFromEvent($event)"
+    :stage="stage"
   )
 </template>
 
@@ -22,7 +23,8 @@ export default {
     TextShape
   },
   props: {
-    shapeName: String
+    shapeName: String,
+    stage: Object
   },
   computed: {
     shapeComponent () {

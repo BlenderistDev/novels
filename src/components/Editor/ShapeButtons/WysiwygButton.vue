@@ -11,21 +11,24 @@ export default {
       config: {
         x: 200,
         y: 200,
+        scaleX: 1,
+        scaleY: 1,
         draggable: true,
         name: 'text',
-        type: 'Text',
-        text: 'test'
+        type: 'Wysiwyg',
+        text: '',
+        image: null
       }
     }
   },
   methods: {
     ...mapMutations('editor', [
-      'addShape'
+      'addText'
     ]),
     addNewShape () {
       const config = { ...this.config }
       config.name = config.name + Date.now()
-      this.addShape(config)
+      this.addText(config)
     }
   }
 }
