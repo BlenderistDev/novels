@@ -1,19 +1,12 @@
 <template lang="pug">
   Fragment
-    .categories-row
+    .categories-row(v-for="category in categories" :key="category")
       .categories-row__top
-        .categories-row__name Название категории
+        .categories-row__name {{ category }}
         .categories-row__link
-          router-link(to="#") Смотреть все
+          router-link(:to="{ name: 'category', params: {category: category} }") Смотреть все
       .categories-row__list
-        Card(v-for="card in cards" :key="card.title" :card="card")
-    .categories-row
-      .categories-row__top
-        .categories-row__name Название категории
-        .categories-row__link
-          router-link(to="#") Смотреть все
-      .categories-row__list
-        Card(v-for="card in cards" :key="card.title" :card="card")
+        Card(v-for="card in cards" :key="card.title + Math.random()" :card="card")
 </template>
 
 <script>
@@ -48,8 +41,15 @@ export default {
           image: 'https://picsum.photos/300/300',
           title: 'Card title 4',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam rerum beatae quis modi, corrupti facilis.'
+        },
+        {
+          image: 'https://picsum.photos/300/300',
+          title: 'Card title 4',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam rerum beatae quis modi, corrupti facilis.'
         }
-      ]
+      ],
+
+      categories: ['name', 'title']
     }
   }
 }

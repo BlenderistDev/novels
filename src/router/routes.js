@@ -20,8 +20,7 @@ const routes = [
       {
         path: 'registration',
         component: () => import('pages/Registration.vue'),
-        name: 'registration',
-        props: true
+        name: 'registration'
       }
     ]
   },
@@ -34,6 +33,12 @@ const routes = [
         path: 'categories',
         component: () => import('pages/Categories'),
         name: 'categories'
+      },
+      {
+        path: 'category/:category',
+        component: () => import('pages/Category'),
+        name: 'category',
+        props: true
       }
     ]
   },
