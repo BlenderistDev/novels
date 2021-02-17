@@ -18,7 +18,6 @@
           color="positive"
           icon="check_circle"
           @click="addNewShape"
-          :disable="imageSrc"
         )
 </template>
 

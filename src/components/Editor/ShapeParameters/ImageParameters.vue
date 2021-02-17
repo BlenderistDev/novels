@@ -6,20 +6,8 @@ div
     Number(propName="x")
   div y
     Number(propName="y")
-  div ScaleX
-    Number(propName="scaleX")
-  div ScaleY
-    Number(propName="scaleY")
-  div Rotation
-    Number(propName="rotation")
-  div Radius
-    Number(propName="radius")
-  div fill
-    Color(propName="fill")
-  div stroke
-    Color(propName="stroke")
-  div strokeWidth
-    NumberSlider(propName="strokeWidth")
+  div src
+    String(propName="src")
 </template>
 
 <script>

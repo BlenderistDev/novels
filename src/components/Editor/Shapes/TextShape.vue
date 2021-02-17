@@ -1,37 +1,72 @@
 <template lang="pug">
   v-image(
-    :config="config"
-    @mousedown="click($event)"
-    @touchstart="click($event)"
+    :config="textConfig"
+    @mousedown="$emit('mousedown', $event)"
+    @touchstart="$emit('mousedown', $event)"
     @transformend="$emit('transformend', $event)"
-    @dragmove="updateShape"
+    @dragmove="updateShape({...$event.target.attrs})"
   )
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
+import _ from 'lodash'
 import { VueEditor } from 'vue2-editor'
+import html2canvas from 'html2canvas'
 
 export default {
   components: {
     VueEditor
   },
+  data () {
+    return {
+      image: null
+    }
+  },
   props: {
     config: Object
   },
+  computed: {
+    textConfig () {
+      const config = { ...this.config }
+      config.image = this.image
+      return config
+    }
+  },
   methods: {
     ...mapMutations('editor', [
-      'updateShape',
-      'showWysiwyg',
-      'hideWysiwyg'
+      'updateShape'
     ]),
-    click (event) {
-      this.showWysiwyg({
-        event: event,
-        content: this.config.text
+    ...mapActions('editor', [
+      'updateShapeFromEvent'
+    ]),
+
+    // loadImage () {
+    //   const image = new window.Image()
+    //   image.src = this.config.src
+    //   image.onload = () => {
+    //     this.image = image
+    //   }
+    // },
+    loadImage () {
+      if (!document.querySelector('.ql-editor')) {
+        return
+      }
+      html2canvas(document.querySelector('.ql-editor'), {
+        backgroundColor: 'rgba(0,0,0,0)'
+      }).then((canvas) => {
+        this.image = canvas
       })
-      this.$emit('mousedown', event)
     }
+  },
+  watch: {
+    config () {
+      this.debouncedGetAnswer()
+      // this.loadImage()
+    }
+  },
+  created () {
+    this.debouncedGetAnswer = _.debounce(this.loadImage, 500)
   }
 }
 </script>

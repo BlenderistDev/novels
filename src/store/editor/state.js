@@ -2,6 +2,9 @@ export default function () {
   return {
     shapeList: [],
     wysiwygContent: '',
-    wysiwygTarget: null
+    wysiwygTarget: null,
+    backgroundImage: '',
+    stageConfig: {},
+    selectedShapeName: ''
   }
 }

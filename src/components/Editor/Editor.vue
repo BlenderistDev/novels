@@ -3,24 +3,18 @@ div
   ShapesBar
   .row
     .col-3
-      Properties(:shape="configKonva")
+      Properties
     .col-6
-      v-stage(
-        :config="configKonva"
-        @mousedown="hideTransform"
-        @touchstart="hideTransform"
-      )
-        v-layer(rel="layer")
+      v-stage(:config="stageConfig")
+        Background
+        v-layer
           shape(
-            v-for="(circle, index) in shapeList"
+            v-for="(shape, index) in shapeList"
             :key="index"
-            :shape="circle"
-            @mousedown="handleStageMouseDown"
-            @touchstart="handleStageMouseDown"
-            @transformend="updateShape"
+            :shapeName="shape.name"
           )
-          Transformer(ref="transformer")
-  Wysiwyg
+          Transformer
+//- Wysiwyg
 </template>
 
 <script>
@@ -30,6 +24,7 @@ import Shape from './Shape'
 import Wysiwyg from './Wysiwyg'
 import Transformer from './Transformer'
 import Properties from './Properties'
+import Background from './Background'
 
 export default {
   components: {
@@ -37,34 +32,31 @@ export default {
     ShapesBar,
     Wysiwyg,
     Transformer,
-    Properties
+    Properties,
+    Background
   },
-  data () {
-    return {
-      configKonva: {
+  created () {
+    this.setStageConfig(this.configKonva)
+    this.setSelectedShape('')
+  },
+  computed: {
+    ...mapState('editor', [
+      'shapeList',
+      'stageConfig'
+    ]),
+    configKonva () {
+      return {
         width: window.innerWidth * 0.7,
         height: window.innerHeight,
         type: 'Stage'
       }
     }
   },
-  computed: {
-    ...mapState('editor', [
-      'shapeList'
-    ])
-  },
   methods: {
     ...mapMutations('editor', [
-      'updateShape'
-    ]),
-    handleStageMouseDown (event) {
-      if (event.target.getParent().className !== 'Transformer') {
-        this.$refs.transformer.updateTransformer(event)
-      }
-    },
-    hideTransform (event) {
-      this.$refs.transformer.hideTransform(event)
-    }
+      'setStageConfig',
+      'setSelectedShape'
+    ])
   }
 }
 </script>
