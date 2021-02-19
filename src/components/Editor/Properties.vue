@@ -14,15 +14,22 @@ import StageParameters from './ShapeParameters/StageParameters'
 import CircleParameters from './ShapeParameters/CircleParameters'
 import ImageParameters from './ShapeParameters/ImageParameters'
 import TextParameters from './ShapeParameters/TextParameters'
+import RectParameters from './ShapeParameters/RectParameters'
+import EllipseParameters from './ShapeParameters/EllipseParameters'
+import StarParameters from './ShapeParameters/StarParameters'
+import LabelParameters from './ShapeParameters/LabelParameters'
 
 export default {
   components: {
     StageParameters,
     CircleParameters,
     ImageParameters,
-    TextParameters
+    TextParameters,
+    RectParameters,
+    EllipseParameters,
+    StarParameters,
+    LabelParameters
   },
-  props: ['stage'],
   computed: {
     ...mapGetters('editor', [
       'selectedShape'

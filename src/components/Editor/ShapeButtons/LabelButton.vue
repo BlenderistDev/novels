@@ -1,5 +1,5 @@
 <template lang="pug">
-div(@click="addNewShape") Текст
+div(@click="addNewShape") Label
 </template>
 
 <script>
@@ -12,10 +12,16 @@ export default {
       config: {
         x: 200,
         y: 200,
+        scaleX: 1,
+        scaleY: 1,
+        fill: '#f31212',
+        stroke: '#000000',
+        strokeWidth: 4,
         draggable: true,
-        name: 'text',
-        type: 'Text',
-        text: 'test'
+        name: 'label',
+        type: 'Label',
+        width: 100,
+        height: 100
       }
     }
   }

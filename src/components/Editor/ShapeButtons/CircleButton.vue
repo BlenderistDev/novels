@@ -3,12 +3,13 @@ div(@click="addNewShape") Круг
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import addNewShapeMixin from './AddNewShapeMixin'
 
 export default {
+  mixins: [addNewShapeMixin],
   data () {
     return {
-      configCircle: {
+      config: {
         x: 200,
         y: 200,
         scaleX: 1,
@@ -21,16 +22,6 @@ export default {
         name: 'circle',
         type: 'Circle'
       }
-    }
-  },
-  methods: {
-    ...mapMutations('editor', [
-      'addShape'
-    ]),
-    addNewShape () {
-      const circleConfig = { ...this.configCircle }
-      circleConfig.name = circleConfig.name + Date.now()
-      this.addShape(circleConfig)
     }
   }
 }

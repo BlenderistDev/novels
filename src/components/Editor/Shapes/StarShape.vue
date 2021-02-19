@@ -1,5 +1,5 @@
 <template lang="pug">
-v-circle(
+v-star(
   :config="config"
   @mousedown="$emit('mousedown', $event)"
   @touchstart="$emit('mousedown', $event)"

@@ -1,11 +1,19 @@
 <template lang="pug">
-input(type="range" v-model="prop" min="0" max="20")
+input(type="range" v-model="prop" :min="min" :max="max")
 </template>
 
 <script>
 import PropertyMixin from './ParametersMixin'
 
 export default {
+  props: {
+    min: {
+      default: 0
+    },
+    max: {
+      default: 20
+    }
+  },
   mixins: [
     PropertyMixin
   ],

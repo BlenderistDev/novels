@@ -5,24 +5,21 @@ div
     .col-3
       Properties
     .col-6
-      v-stage(:config="stageConfig" ref="stage")
+      v-stage(:config="stageConfig")
         Background
         v-layer
           shape(
             v-for="(shape, index) in shapeList"
             :key="index"
             :shapeName="shape.name"
-            :stage="stage"
           )
           Transformer
-//- Wysiwyg
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import ShapesBar from './ShapesBar'
 import Shape from './Shape'
-import Wysiwyg from './Wysiwyg'
 import Transformer from './Transformer'
 import Properties from './Properties'
 import Background from './Background'
@@ -31,7 +28,6 @@ export default {
   components: {
     Shape,
     ShapesBar,
-    Wysiwyg,
     Transformer,
     Properties,
     Background
@@ -50,9 +46,6 @@ export default {
         height: window.innerHeight,
         type: 'Stage'
       }
-    },
-    stage () {
-      return this.$refs.stage
     }
   },
   methods: {

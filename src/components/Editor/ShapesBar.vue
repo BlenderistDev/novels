@@ -8,6 +8,14 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
     WysiwygButton
   .shape-bar__item
     TextButton
+  .shape-bar__item
+    RectButton
+  .shape-bar__item
+    EllipseButton
+  .shape-bar__item
+    StarButton
+  .shape-bar__item
+    LabelButton
 </template>
 
 <script>
@@ -15,13 +23,21 @@ import CircleButton from './ShapeButtons/CircleButton'
 import ImageButton from './ShapeButtons/ImageButton'
 import TextButton from './ShapeButtons/TextButton'
 import WysiwygButton from './ShapeButtons/WysiwygButton'
+import RectButton from './ShapeButtons/RectButton'
+import EllipseButton from './ShapeButtons/EllipseButton'
+import StarButton from './ShapeButtons/StarButton'
+import LabelButton from './ShapeButtons/LabelButton'
 
 export default {
   components: {
     CircleButton,
     ImageButton,
     TextButton,
-    WysiwygButton
+    WysiwygButton,
+    RectButton,
+    EllipseButton,
+    StarButton,
+    LabelButton
   }
 }
 </script>
