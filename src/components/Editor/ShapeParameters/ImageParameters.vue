@@ -1,26 +1,26 @@
 <template lang="pug">
 div
-  div Title
-    String(propName="Title")
-  div x
-    Number(propName="x")
-  div y
-    Number(propName="y")
+  Title
+  Coordinates
+  Scale
+  Stroke
   div src
     String(propName="src")
 </template>
 
 <script>
-import Color from './Parameters/Color'
-import NumberSlider from './Parameters/NumberSlider'
-import Number from './Parameters/Number'
+import Coordinates from './ParameterGroups/Coordinates'
+import Scale from './ParameterGroups/Scale'
+import Stroke from './ParameterGroups/Stroke'
+import Title from './ParameterGroups/Title'
 import String from './Parameters/String'
 
 export default {
   components: {
-    Color,
-    NumberSlider,
-    Number,
+    Title,
+    Stroke,
+    Scale,
+    Coordinates,
     String
   }
 }

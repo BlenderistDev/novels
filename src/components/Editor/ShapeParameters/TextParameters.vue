@@ -1,11 +1,9 @@
 <template lang="pug">
 div
-  div Title
-    String(propName="Title")
-  div x
-    Number(propName="x")
-  div y
-    Number(propName="y")
+  Title
+  Coordinates
+  Scale
+  Stroke
   div Text
     Textarea(propName="text")
   div FontFamily
@@ -18,30 +16,29 @@ div
       propName="fontStyle"
       :list="fontStyleList"
     )
-  div Color
-    Color(propName="fill")
-  div ShadowColor
-    Color(propName="shadowColor")
+  Fill
   div fontSize
     NumberSlider(propName="fontSize")
 </template>
 
 <script>
-import Color from './Parameters/Color'
+import Coordinates from './ParameterGroups/Coordinates'
+import Scale from './ParameterGroups/Scale'
+import Stroke from './ParameterGroups/Stroke'
+import Title from './ParameterGroups/Title'
+import Fill from './ParameterGroups/Fill'
 import NumberSlider from './Parameters/NumberSlider'
-import Number from './Parameters/Number'
-import String from './Parameters/String'
-import Wysiwyg from './Parameters/Wysiwyg'
 import Select from './Parameters/Select'
 import Textarea from './Parameters/Textarea'
 
 export default {
   components: {
-    Color,
+    Coordinates,
+    Scale,
+    Stroke,
+    Title,
+    Fill,
     NumberSlider,
-    Number,
-    String,
-    Wysiwyg,
     Select,
     Textarea
   },
