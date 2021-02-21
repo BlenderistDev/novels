@@ -6,10 +6,6 @@ div
     Number(propName="x")
   div y
     Number(propName="y")
-  div width
-    Number(propName="width")
-  div height
-    Number(propName="height")
   div ScaleX
     Number(propName="scaleX")
   div ScaleY
@@ -24,8 +20,6 @@ div
     Color(propName="stroke")
   div strokeWidth
     NumberSlider(propName="strokeWidth")
-  div numPoints
-    NumberSlider(propName="numPoints" max="50")
   div innerRadius
     NumberSlider(propName="innerRadius" max="100")
   div outerRadius

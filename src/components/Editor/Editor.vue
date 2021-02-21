@@ -2,7 +2,7 @@
 div
   ShapesBar
   .row
-    .col-3
+    .col-3#props-bar
       Properties
     .col-6
       v-stage(:config="stageConfig")
@@ -33,25 +33,33 @@ export default {
     Background
   },
   created () {
-    this.setStageConfig(this.configKonva)
+    this.setStageConfig(this.getStageConfig())
+    window.addEventListener('resize', () => {
+      this.setStageConfig(this.getStageConfig())
+    })
   },
   computed: {
     ...mapState('editor', [
       'shapeList',
       'stageConfig'
-    ]),
-    configKonva () {
-      return {
-        width: window.innerWidth * 0.7,
-        height: window.innerHeight,
-        type: 'Stage'
-      }
-    }
+    ])
   },
   methods: {
     ...mapMutations('editor', [
       'setStageConfig'
-    ])
+    ]),
+    getStageConfig () {
+      const propsBar = document.getElementById('props-bar')
+      let width = window.innerWidth
+      if (propsBar !== null) {
+        width = width - document.getElementById('props-bar').offsetWidth
+      }
+      return {
+        width: width,
+        height: window.innerHeight,
+        type: 'Stage'
+      }
+    }
   }
 }
 </script>
@@ -59,5 +67,6 @@ export default {
 <style scoped>
 .col-3 {
   background-color: beige;
+  max-width: 300px;
 }
 </style>

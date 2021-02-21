@@ -16,6 +16,8 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
     StarButton
   .shape-bar__item
     LabelButton
+  .shape-bar__item
+    RingButton
 </template>
 
 <script>
@@ -27,6 +29,7 @@ import RectButton from './ShapeButtons/RectButton'
 import EllipseButton from './ShapeButtons/EllipseButton'
 import StarButton from './ShapeButtons/StarButton'
 import LabelButton from './ShapeButtons/LabelButton'
+import RingButton from './ShapeButtons/RingButton'
 
 export default {
   components: {
@@ -37,7 +40,8 @@ export default {
     RectButton,
     EllipseButton,
     StarButton,
-    LabelButton
+    LabelButton,
+    RingButton
   }
 }
 </script>

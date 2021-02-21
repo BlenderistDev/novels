@@ -17,6 +17,7 @@ import RectShape from './Shapes/RectShape'
 import EllipseShape from './Shapes/EllipseShape'
 import StarShape from './Shapes/StarShape'
 import LabelShape from './Shapes/LabelShape'
+import RingShape from './Shapes/RingShape'
 import _ from 'lodash'
 
 export default {
@@ -27,7 +28,8 @@ export default {
     RectShape,
     EllipseShape,
     StarShape,
-    LabelShape
+    LabelShape,
+    RingShape
   },
   props: {
     shapeName: String
