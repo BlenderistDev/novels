@@ -6,6 +6,7 @@ div
   Stroke
   div src
     String(propName="src")
+  Crop
 </template>
 
 <script>
@@ -14,6 +15,7 @@ import Scale from './ParameterGroups/Scale'
 import Stroke from './ParameterGroups/Stroke'
 import Title from './ParameterGroups/Title'
 import String from './Parameters/String'
+import Crop from './ParameterGroups/Crop'
 
 export default {
   components: {
@@ -21,7 +23,8 @@ export default {
     Stroke,
     Scale,
     Coordinates,
-    String
+    String,
+    Crop
   }
 }
 </script>

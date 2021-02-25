@@ -38,7 +38,8 @@ export default {
         draggable: true,
         name: 'image',
         type: 'Image',
-        src: this.imageSrc
+        src: this.imageSrc,
+        cropType: 'scale'
       }
     }
   },

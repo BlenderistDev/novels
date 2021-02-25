@@ -15,7 +15,7 @@ export default {
       set (prop) {
         const config = { ...this.selectedShape }
         config[this.propName] = this.prepareValue(prop)
-        this.updateShape(config)
+        this.updateShape(this.prepareConfig(config))
       }
     }
   },
@@ -23,6 +23,7 @@ export default {
     ...mapMutations('editor', [
       'updateShape'
     ]),
-    prepareValue: (value) => value
+    prepareValue: value => value,
+    prepareConfig: config => config
   }
 }
