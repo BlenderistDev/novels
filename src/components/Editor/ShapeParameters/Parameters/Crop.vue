@@ -1,7 +1,6 @@
 <script>
 import Select from '../Parameters/Select'
 import PropertyMixin from './ParametersMixin'
-import _ from 'lodash'
 
 export default {
   mixins: [
@@ -13,10 +12,6 @@ export default {
   },
   methods: {
     prepareConfig (config) {
-      if (_.isNull(config.image)) {
-        return null
-      }
-
       const imageWidth = config.width
       const imageHeight = config.height
 
@@ -75,7 +70,10 @@ export default {
         newWidth = width
         newHeight = height
       } else if (cropType === 'fit') {
-        return null
+        x = null
+        y = null
+        newWidth = null
+        newHeight = null
       } else {
         console.error(
           new Error('Unknown clip position property - ' + this.config.cropType)
