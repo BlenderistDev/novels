@@ -15,7 +15,7 @@ export default {
       set (prop) {
         const config = { ...this.selectedShape }
         config[this.propName] = this.prepareValue(prop)
-        this.updateShape(this.prepareConfig(config))
+        this.saveConfig(config)
       }
     }
   },
@@ -24,6 +24,9 @@ export default {
       'updateShape'
     ]),
     prepareValue: value => value,
-    prepareConfig: config => config
+    prepareConfig: config => config,
+    saveConfig (config) {
+      this.updateShape(this.prepareConfig(config))
+    }
   }
 }
