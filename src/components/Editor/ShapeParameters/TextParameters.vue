@@ -1,8 +1,6 @@
 <template lang="pug">
 div
-  Title
-  Coordinates
-  Scale
+  Common
   Stroke
   div Text
     Textarea(propName="text")
@@ -22,10 +20,8 @@ div
 </template>
 
 <script>
-import Coordinates from './ParameterGroups/Coordinates'
-import Scale from './ParameterGroups/Scale'
+import Common from './ParameterGroups/Common'
 import Stroke from './ParameterGroups/Stroke'
-import Title from './ParameterGroups/Title'
 import Fill from './ParameterGroups/Fill'
 import NumberSlider from './Parameters/NumberSlider'
 import Select from './Parameters/Select'
@@ -33,10 +29,8 @@ import Textarea from './Parameters/Textarea'
 
 export default {
   components: {
-    Coordinates,
-    Scale,
+    Common,
     Stroke,
-    Title,
     Fill,
     NumberSlider,
     Select,

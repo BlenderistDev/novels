@@ -1,32 +1,20 @@
 <template lang="pug">
 div
-  Title
-  Coordinates
-  div width
-    Number(propName="width")
-  div height
-    Number(propName="height")
-  Scale
+  Common
   Fill
   Stroke
 </template>
 
 <script>
-import Coordinates from './ParameterGroups/Coordinates'
-import Scale from './ParameterGroups/Scale'
+import Common from './ParameterGroups/Common'
 import Stroke from './ParameterGroups/Stroke'
-import Title from './ParameterGroups/Title'
 import Fill from './ParameterGroups/Fill'
-import Number from './Parameters/Number'
 
 export default {
   components: {
-    Coordinates,
-    Scale,
+    Common,
     Stroke,
-    Fill,
-    Title,
-    Number
+    Fill
   }
 }
 </script>

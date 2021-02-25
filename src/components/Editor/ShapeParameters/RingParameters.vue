@@ -1,8 +1,6 @@
 <template lang="pug">
 div
-  Title
-  Coordinates
-  Scale
+  Common
   Radius
   Fill
   Stroke
@@ -10,10 +8,8 @@ div
 </template>
 
 <script>
-import Coordinates from './ParameterGroups/Coordinates'
-import Scale from './ParameterGroups/Scale'
+import Common from './ParameterGroups/Common'
 import Stroke from './ParameterGroups/Stroke'
-import Title from './ParameterGroups/Title'
 import Fill from './ParameterGroups/Fill'
 import DoubleRadius from './ParameterGroups/DoubleRadius'
 import Radius from './ParameterGroups/Radius'
@@ -22,10 +18,8 @@ export default {
   components: {
     DoubleRadius,
     Radius,
-    Coordinates,
-    Scale,
+    Common,
     Stroke,
-    Title,
     Fill
   }
 }
