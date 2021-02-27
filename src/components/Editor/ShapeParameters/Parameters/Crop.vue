@@ -101,12 +101,6 @@ export default {
 
       config.crop = crop
       return config
-      // return {
-      //   x: x,
-      //   y: y,
-      //   width: newWidth,
-      //   height: newHeight
-      // }
     }
   }
 }
