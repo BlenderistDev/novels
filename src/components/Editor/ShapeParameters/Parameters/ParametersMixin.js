@@ -14,7 +14,7 @@ export default {
       },
       set (prop) {
         const config = { ...this.selectedShape }
-        config[this.propName] = this.prepareValue(prop)
+        config[this.propName] = this.prepareValue(prop, config[this.propName])
         this.saveConfig(config)
       }
     }
@@ -23,7 +23,7 @@ export default {
     ...mapMutations('editor', [
       'updateShape'
     ]),
-    prepareValue: value => value,
+    prepareValue: (value, oldValue) => value,
     prepareConfig: config => config,
     saveConfig (config) {
       this.updateShape(this.prepareConfig(config))

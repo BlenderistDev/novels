@@ -19,6 +19,7 @@ import EllipseParameters from './ShapeParameters/EllipseParameters'
 import StarParameters from './ShapeParameters/StarParameters'
 import LabelParameters from './ShapeParameters/LabelParameters'
 import RingParameters from './ShapeParameters/RingParameters'
+import ShapeArrowParameters from './ShapeParameters/ShapeArrowParameters'
 
 export default {
   components: {
@@ -30,7 +31,8 @@ export default {
     EllipseParameters,
     StarParameters,
     LabelParameters,
-    RingParameters
+    RingParameters,
+    ShapeArrowParameters
   },
   computed: {
     ...mapGetters('editor', [

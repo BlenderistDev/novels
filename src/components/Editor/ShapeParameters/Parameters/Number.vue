@@ -10,7 +10,7 @@ export default {
     PropertyMixin
   ],
   methods: {
-    prepareValue: (value) => parseInt(value)
+    prepareValue: (value, oldValue) => parseInt(value)
   }
 }
 </script>
