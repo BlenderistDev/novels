@@ -5,8 +5,6 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
   .shape-bar__item
     CircleButton
   .shape-bar__item
-    WysiwygButton
-  .shape-bar__item
     TextButton
   .shape-bar__item
     RectButton
@@ -26,7 +24,6 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
 import CircleButton from './ShapeButtons/CircleButton'
 import ImageButton from './ShapeButtons/ImageButton'
 import TextButton from './ShapeButtons/TextButton'
-import WysiwygButton from './ShapeButtons/WysiwygButton'
 import RectButton from './ShapeButtons/RectButton'
 import EllipseButton from './ShapeButtons/EllipseButton'
 import StarButton from './ShapeButtons/StarButton'
@@ -39,7 +36,6 @@ export default {
     CircleButton,
     ImageButton,
     TextButton,
-    WysiwygButton,
     RectButton,
     EllipseButton,
     StarButton,

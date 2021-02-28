@@ -17,7 +17,6 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'hideWysiwyg',
       'setSelectedShape'
     ]),
     updateTransformer () {
@@ -25,9 +24,6 @@ export default {
       const stage = transformerNode.getStage()
       const selectedNode = stage.findOne('.' + this.selectedShape.name)
 
-      if (selectedNode.attrs.type !== 'Text') {
-        this.hideWysiwyg()
-      }
       if (selectedNode) {
         transformerNode.nodes([selectedNode])
       }
@@ -37,7 +33,6 @@ export default {
     hideTransform (e) {
       const transformerNode = this.$refs.transformer.getNode()
       transformerNode.nodes([])
-      this.hideWysiwyg()
       this.setSelectedShape('')
     }
   },

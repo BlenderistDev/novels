@@ -31,7 +31,6 @@ import Color from './Parameters/Color'
 import NumberSlider from './Parameters/NumberSlider'
 import Number from './Parameters/Number'
 import String from './Parameters/String'
-import Wysiwyg from './Parameters/Wysiwyg'
 import Select from './Parameters/Select'
 import Textarea from './Parameters/Textarea'
 
@@ -41,7 +40,6 @@ export default {
     NumberSlider,
     Number,
     String,
-    Wysiwyg,
     Select,
     Textarea
   },
