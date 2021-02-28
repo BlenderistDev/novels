@@ -15,7 +15,7 @@ export default {
         draggable: true,
         name: 'text',
         type: 'Text',
-        text: 'test'
+        text: ''
       }
     }
   }

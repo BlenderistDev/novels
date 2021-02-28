@@ -19,7 +19,7 @@ export default {
         draggable: true,
         name: 'shapeArrow',
         type: 'ShapeArrow',
-        points: [0, 0, 100, 100]
+        points: []
       }
     }
   }
