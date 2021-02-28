@@ -1,5 +1,5 @@
 <template lang="pug">
-input(type="range" v-model="prop" :min="min" :max="max")
+input(type="range" v-model="prop" :min="min" :max="max" :step="step")
 </template>
 
 <script>
@@ -12,13 +12,16 @@ export default {
     },
     max: {
       default: 20
+    },
+    step: {
+      default: 1
     }
   },
   mixins: [
     PropertyMixin
   ],
   methods: {
-    prepareValue: (value, oldValue) => parseInt(value)
+    prepareValue: (value, oldValue) => parseFloat(value)
   }
 }
 </script>

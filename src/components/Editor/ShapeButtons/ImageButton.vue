@@ -23,6 +23,7 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import Konva from 'konva'
 
 export default {
   data () {
@@ -30,7 +31,7 @@ export default {
       showForm: false,
       image: null,
       imageSrc: '',
-      configCircle: {
+      config: {
         x: 200,
         y: 200,
         scaleX: 1,
@@ -39,7 +40,13 @@ export default {
         name: 'image',
         type: 'Image',
         src: this.imageSrc,
-        cropType: 'scale'
+        cropType: 'scale',
+        filters: [
+          Konva.Filters.Noise,
+          Konva.Filters.Blur,
+          Konva.Filters.Brighten,
+          Konva.Filters.Contrast
+        ]
       }
     }
   },
@@ -48,10 +55,10 @@ export default {
       'addShape'
     ]),
     addNewShape () {
-      const circleConfig = { ...this.configCircle }
-      circleConfig.name = circleConfig.name + Date.now()
-      circleConfig.src = this.imageSrc
-      this.addShape(circleConfig)
+      const config = { ...this.config }
+      config.name = config.name + Date.now()
+      config.src = this.imageSrc
+      this.addShape(config)
       this.showForm = false
       this.imageSrc = ''
     }

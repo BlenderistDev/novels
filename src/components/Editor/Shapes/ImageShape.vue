@@ -5,12 +5,12 @@ v-image(
   @mousedown="$emit('mousedown', $event)"
   @touchstart="$emit('mousedown', $event)"
   @transformend="$emit('transformend', $event)"
+  ref="image"
 )
 </template>
 
 <script>
 import { mapMutations, mapActions } from 'vuex'
-// import _ from 'lodash'
 
 export default {
   props: {
@@ -43,6 +43,12 @@ export default {
   },
   created () {
     this.loadImage()
+  },
+  updated () {
+    // recache
+    const rectNode = this.$refs.image.getNode()
+    // may need to redraw layer manually
+    rectNode.cache()
   }
 }
 </script>
