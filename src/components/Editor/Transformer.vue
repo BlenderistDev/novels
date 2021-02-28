@@ -15,6 +15,10 @@ export default {
       }
     }
   },
+  mounted () {
+    const transformerNode = this.$refs.transformer.getNode()
+    transformerNode.rotationSnaps([0, 45, 90, 135, 180, 225, 270])
+  },
   methods: {
     ...mapMutations('editor', [
       'setSelectedShape'
