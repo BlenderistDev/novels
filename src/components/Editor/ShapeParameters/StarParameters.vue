@@ -6,7 +6,6 @@ div
   div height
     Number(propName="height")
   Fill
-  Stroke
   div numPoints
     NumberSlider(propName="numPoints" max="50")
   DoubleRadius
@@ -14,7 +13,6 @@ div
 
 <script>
 import Common from './ParameterGroups/Common'
-import Stroke from './ParameterGroups/Stroke'
 import Fill from './ParameterGroups/Fill'
 import DoubleRadius from './ParameterGroups/DoubleRadius'
 import NumberSlider from './Parameters/NumberSlider'
@@ -23,7 +21,6 @@ import Number from './Parameters/Number'
 export default {
   components: {
     Common,
-    Stroke,
     Fill,
     DoubleRadius,
     NumberSlider,

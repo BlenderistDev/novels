@@ -10,9 +10,6 @@ export default {
   data () {
     return {
       config: {
-        fill: '#f31212',
-        stroke: '#000000',
-        strokeWidth: 4,
         name: 'rect',
         type: 'Rect',
         width: 100,

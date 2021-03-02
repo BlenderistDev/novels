@@ -1,7 +1,6 @@
 <template lang="pug">
 div
   Common
-  Stroke
   div Text
     Textarea(propName="text")
   div FontFamily
@@ -21,7 +20,6 @@ div
 
 <script>
 import Common from './ParameterGroups/Common'
-import Stroke from './ParameterGroups/Stroke'
 import Fill from './ParameterGroups/Fill'
 import NumberSlider from './Parameters/NumberSlider'
 import Select from './Parameters/Select'
@@ -30,7 +28,6 @@ import Textarea from './Parameters/Textarea'
 export default {
   components: {
     Common,
-    Stroke,
     Fill,
     NumberSlider,
     Select,

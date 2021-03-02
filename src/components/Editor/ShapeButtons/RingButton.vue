@@ -11,9 +11,6 @@ export default {
     return {
       config: {
         radius: 50,
-        fill: '#f31212',
-        stroke: '#000000',
-        strokeWidth: 4,
         name: 'ring',
         type: 'Ring',
         innerRadius: 50,
