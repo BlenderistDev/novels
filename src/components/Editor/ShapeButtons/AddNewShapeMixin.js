@@ -1,6 +1,17 @@
 import { mapMutations, mapGetters } from 'vuex'
 
 export default {
+  data () {
+    return {
+      commonConfig: {
+        x: 200,
+        y: 200,
+        scaleX: 1,
+        scaleY: 1,
+        draggable: true
+      }
+    }
+  },
   props: {
     propName: String
   },
@@ -24,7 +35,7 @@ export default {
       'addShape'
     ]),
     addNewShape () {
-      const config = { ...this.config }
+      const config = { ...this.commonConfig, ...this.config }
       config.name = config.name + Date.now()
       this.addShape(config)
     }

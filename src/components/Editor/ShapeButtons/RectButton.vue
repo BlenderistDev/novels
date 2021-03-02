@@ -10,14 +10,9 @@ export default {
   data () {
     return {
       config: {
-        x: 200,
-        y: 200,
-        scaleX: 1,
-        scaleY: 1,
         fill: '#f31212',
         stroke: '#000000',
         strokeWidth: 4,
-        draggable: true,
         name: 'rect',
         type: 'Rect',
         width: 100,

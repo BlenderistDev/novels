@@ -10,13 +10,13 @@ export default {
   data () {
     return {
       config: {
-        scaleX: 1,
-        scaleY: 1,
+        x: 0,
+        y: 0,
         radius: 50,
         fill: '#f31212',
         stroke: '#000000',
         strokeWidth: 4,
-        draggable: true,
+        draggable: false,
         name: 'shapeArrow',
         type: 'ShapeArrow',
         points: []

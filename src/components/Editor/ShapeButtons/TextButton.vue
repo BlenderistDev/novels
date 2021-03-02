@@ -10,9 +10,6 @@ export default {
   data () {
     return {
       config: {
-        x: 200,
-        y: 200,
-        draggable: true,
         name: 'text',
         type: 'Text',
         text: ''
