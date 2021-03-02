@@ -37,7 +37,8 @@ export default {
     addNewShape () {
       const config = { ...this.commonConfig, ...this.config }
       config.name = config.name + Date.now()
-      this.addShape(config)
-    }
+      this.addShape(this.prepareConfig(config))
+    },
+    prepareConfig: config => config
   }
 }

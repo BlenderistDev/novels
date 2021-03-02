@@ -4,7 +4,6 @@ div
   Stroke
   Src
   Crop
-  ImageFilter
   FillFilter
 </template>
 
@@ -13,7 +12,6 @@ import Common from './ParameterGroups/Common'
 import Stroke from './ParameterGroups/Stroke'
 import Crop from './ParameterGroups/Crop'
 import Src from './ParameterGroups/Src'
-import ImageFilter from './ParameterGroups/ImageFilter'
 import FillFilter from './ParameterGroups/FillFilter'
 
 export default {
@@ -22,7 +20,6 @@ export default {
     Common,
     Src,
     Crop,
-    ImageFilter,
     FillFilter
   }
 }

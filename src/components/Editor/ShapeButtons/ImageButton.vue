@@ -22,39 +22,26 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import addNewShapeMixin from './AddNewShapeMixin'
 
 export default {
+  mixins: [addNewShapeMixin],
   data () {
     return {
       showForm: false,
-      image: null,
       imageSrc: '',
       config: {
-        x: 200,
-        y: 200,
-        scaleX: 1,
-        scaleY: 1,
-        draggable: true,
         name: 'image',
         type: 'Image',
-        src: this.imageSrc,
         cropType: 'scale',
         filters: []
       }
     }
   },
   methods: {
-    ...mapMutations('editor', [
-      'addShape'
-    ]),
-    addNewShape () {
-      const config = { ...this.config }
-      config.name = config.name + Date.now()
+    prepareConfig (config) {
       config.src = this.imageSrc
-      this.addShape(config)
-      this.showForm = false
-      this.imageSrc = ''
+      return config
     }
   }
 }

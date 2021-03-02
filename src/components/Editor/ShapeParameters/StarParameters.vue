@@ -5,8 +5,6 @@ div
     Number(propName="width")
   div height
     Number(propName="height")
-  div Radius
-    Number(propName="radius")
   Fill
   Stroke
   div numPoints
