@@ -16,15 +16,6 @@ export function updateShape (state, config) {
   state.shapeList = shapeList
 }
 
-export function updateTextShape (state, { key, image, text }) {
-  state.shapeList.forEach((shape, index) => {
-    if (key === index) {
-      shape.image = image
-      shape.text = text
-    }
-  })
-}
-
 export function setBackgroundImage (state, image) {
   state.backgroundImage = image
 }
