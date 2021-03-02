@@ -23,7 +23,6 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import Konva from 'konva'
 
 export default {
   data () {
@@ -41,12 +40,7 @@ export default {
         type: 'Image',
         src: this.imageSrc,
         cropType: 'scale',
-        filters: [
-          Konva.Filters.Noise,
-          Konva.Filters.Blur,
-          Konva.Filters.Brighten,
-          Konva.Filters.Contrast
-        ]
+        filters: []
       }
     }
   },

@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   input(type="checkbox" v-model="prop")
-  v-slot(v-if="prop")
+  slot(v-if="prop")
 </template>
 
 <script>
