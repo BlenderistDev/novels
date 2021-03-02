@@ -249,6 +249,23 @@ export default {
               step: 0.1
             }
           ]
+        },
+        Kaleidoscope: {
+          filter: Konva.Filters.Kaleidoscope,
+          options: [
+            {
+              name: 'kaleidoscopeAngle',
+              min: 0,
+              max: 360,
+              step: 1
+            },
+            {
+              name: 'kaleidoscopePower',
+              min: 0,
+              max: 5,
+              step: 1
+            }
+          ]
         }
       },
       showFilters: false
