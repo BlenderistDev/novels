@@ -5,6 +5,7 @@ div
   Src
   Crop
   ImageFilter
+  FillFilter
 </template>
 
 <script>
@@ -13,6 +14,7 @@ import Stroke from './ParameterGroups/Stroke'
 import Crop from './ParameterGroups/Crop'
 import Src from './ParameterGroups/Src'
 import ImageFilter from './ParameterGroups/ImageFilter'
+import FillFilter from './ParameterGroups/FillFilter'
 
 export default {
   components: {
@@ -20,7 +22,8 @@ export default {
     Common,
     Src,
     Crop,
-    ImageFilter
+    ImageFilter,
+    FillFilter
   }
 }
 </script>
