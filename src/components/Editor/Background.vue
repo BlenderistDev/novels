@@ -2,7 +2,7 @@
 v-layer
   v-image(
     :config="config"
-    @mousedown="setSelectedShape('')"
+    @click="click"
   )
 </template>
 
@@ -45,6 +45,12 @@ export default {
       image.onload = () => {
         this.image = image
         this.recrop(this.image, { width: 2000, height: 2000 })
+      }
+    },
+    click (event) {
+      if (event.evt.which === 1) {
+        this.$emit('click', event)
+        this.setSelectedShape('')
       }
     }
   }

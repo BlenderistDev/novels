@@ -27,3 +27,7 @@ export function setStageConfig (state, config) {
 export function setSelectedShape (state, name) {
   state.selectedShapeName = name
 }
+
+export function deleteShape (state, name) {
+  state.shapeList = _.filter(state.shapeList, shape => shape.name !== name)
+}

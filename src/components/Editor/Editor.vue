@@ -5,8 +5,8 @@ div
     .col-3#props-bar
       Properties
     .col-6
-      v-stage(:config="stageConfig")
-        Background
+      v-stage(:config="stageConfig" @contextmenu="showContext($event)" ref="stage")
+        Background(@click="click")
         v-layer
           shape(
             v-for="(shape, index) in shapeList"
@@ -14,6 +14,7 @@ div
             :shapeName="shape.name"
           )
           Transformer
+  Context(ref="context")
 </template>
 
 <script>
@@ -23,6 +24,7 @@ import Shape from './Shape'
 import Transformer from './Transformer'
 import Properties from './Properties'
 import Background from './Background'
+import Context from './Context/Context'
 
 export default {
   components: {
@@ -30,7 +32,8 @@ export default {
     ShapesBar,
     Transformer,
     Properties,
-    Background
+    Background,
+    Context
   },
   created () {
     this.setStageConfig(this.getStageConfig())
@@ -59,6 +62,13 @@ export default {
         height: window.innerHeight,
         type: 'Stage'
       }
+    },
+    showContext (event) {
+      event.evt.preventDefault()
+      this.$refs.context.open(event, this.$refs.stage.getNode())
+    },
+    click (event) {
+      this.$refs.context.hide()
     }
   }
 }
