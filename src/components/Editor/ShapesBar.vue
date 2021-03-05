@@ -18,6 +18,8 @@ div.q-pa-sm.q-pl-md.row.items-center.bg-blue-6.text-white.shape-bar
     RingButton
   .shape-bar__item
     ShapeArrowButton
+  .shape-bar__item
+    GroupButton
 </template>
 
 <script>
@@ -30,6 +32,7 @@ import StarButton from './ShapeButtons/StarButton'
 import LabelButton from './ShapeButtons/LabelButton'
 import RingButton from './ShapeButtons/RingButton'
 import ShapeArrowButton from './ShapeButtons/ShapeArrowButton'
+import GroupButton from './ShapeButtons/GroupButton'
 
 export default {
   components: {
@@ -41,7 +44,8 @@ export default {
     StarButton,
     LabelButton,
     RingButton,
-    ShapeArrowButton
+    ShapeArrowButton,
+    GroupButton
   }
 }
 </script>

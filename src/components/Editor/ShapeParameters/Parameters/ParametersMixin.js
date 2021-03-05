@@ -10,7 +10,7 @@ export default {
     ]),
     prop: {
       get () {
-        return this.selectedShape[this.propName]
+        return this.prepareProp(this.selectedShape[this.propName])
       },
       set (prop) {
         const config = { ...this.selectedShape }
@@ -27,6 +27,7 @@ export default {
     prepareConfig: config => config,
     saveConfig (config) {
       this.updateShape(this.prepareConfig(config))
-    }
+    },
+    prepareProp: prop => prop
   }
 }

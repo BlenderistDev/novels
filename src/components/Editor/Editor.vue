@@ -7,33 +7,25 @@ div
     .col-6
       v-stage(:config="stageConfig" @contextmenu="showContext($event)" ref="stage")
         Background(@click="click")
-        v-layer
-          shape(
-            v-for="(shape, index) in shapeList"
-            :key="index"
-            :shapeName="shape.name"
-          )
-          Transformer
+        Draggable
   Context(ref="context")
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import ShapesBar from './ShapesBar'
-import Shape from './Shape'
-import Transformer from './Transformer'
 import Properties from './Properties'
-import Background from './Background'
+import Background from './Layers/Background'
+import Draggable from './Layers/Draggable'
 import Context from './Context/Context'
 
 export default {
   components: {
-    Shape,
     ShapesBar,
-    Transformer,
     Properties,
     Background,
-    Context
+    Context,
+    Draggable
   },
   created () {
     this.setStageConfig(this.getStageConfig())
@@ -43,7 +35,6 @@ export default {
   },
   computed: {
     ...mapState('editor', [
-      'shapeList',
       'stageConfig'
     ])
   },

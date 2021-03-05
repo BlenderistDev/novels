@@ -20,6 +20,7 @@ import StarParameters from './ShapeParameters/StarParameters'
 import LabelParameters from './ShapeParameters/LabelParameters'
 import RingParameters from './ShapeParameters/RingParameters'
 import ShapeArrowParameters from './ShapeParameters/ShapeArrowParameters'
+import GroupParameters from './ShapeParameters/GroupParameters'
 
 export default {
   components: {
@@ -32,7 +33,8 @@ export default {
     StarParameters,
     LabelParameters,
     RingParameters,
-    ShapeArrowParameters
+    ShapeArrowParameters,
+    GroupParameters
   },
   computed: {
     ...mapGetters('editor', [

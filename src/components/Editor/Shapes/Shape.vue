@@ -10,16 +10,16 @@
 
 <script>
 import { mapMutations, mapState, mapActions } from 'vuex'
-import CircleShape from './Shapes/CircleShape'
-import ImageShape from './Shapes/ImageShape'
-import TextShape from './Shapes/TextShape'
-import RectShape from './Shapes/RectShape'
-import EllipseShape from './Shapes/EllipseShape'
-import StarShape from './Shapes/StarShape'
-import LabelShape from './Shapes/LabelShape'
-import RingShape from './Shapes/RingShape'
-import ShapeArrowShape from './Shapes/ShapeArrowShape'
-import GroupShape from './Shapes/GroupShape'
+import CircleShape from './CircleShape'
+import ImageShape from './ImageShape'
+import TextShape from './TextShape'
+import RectShape from './RectShape'
+import EllipseShape from './EllipseShape'
+import StarShape from './StarShape'
+import LabelShape from './LabelShape'
+import RingShape from './RingShape'
+import ShapeArrowShape from './ShapeArrowShape'
+import GroupShape from './GroupShape'
 import _ from 'lodash'
 
 export default {
