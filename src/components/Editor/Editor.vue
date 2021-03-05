@@ -69,5 +69,8 @@ export default {
 .col-3 {
   background-color: beige;
   max-width: 300px;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 10px 20px;
 }
 </style>
