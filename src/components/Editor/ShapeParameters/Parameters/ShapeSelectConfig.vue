@@ -22,21 +22,23 @@ export default {
   },
   methods: {
     ...mapMutations('editor', [
-      'setShapeList'
+      'setShapeList',
+      'updateShape'
     ]),
     prepareValue (value, oldValue) {
-      return _.filter(this.shapeList, shape => _.includes(value, shape.name))
-    },
-    prepareProp (prop) {
-      return _.map(prop, shape => shape.name)
-    },
-    saveConfig (config) {
-      this.setShapeList(_.filter(this.shapeList, shape => !_.find(this.prepareValue(this.prop), shape.name)))
-      config.shapes = _.map(config.shapes, shape => {
-        shape.draggable = false
+      const shapeList = _.cloneDeep(this.shapeList)
+      _.map(shapeList, shape => {
+        if (_.includes(value, shape.name)) {
+          shape.group = this.selectedShape.name
+          shape.draggable = false
+        } else {
+          shape.group = ''
+          shape.draggable = true
+        }
         return shape
       })
-      this.updateShape(this.prepareConfig(config))
+      this.setShapeList(shapeList)
+      return value
     }
   }
 }

@@ -10,7 +10,8 @@ export default {
         scaleY: 1,
         draggable: true,
         stroke: '#000000',
-        strokeWidth: 1
+        strokeWidth: 1,
+        group: ''
       }
     }
   },

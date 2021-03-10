@@ -7,15 +7,17 @@ v-group(
   @dragmove="updateShape({...$event.target.attrs})"
 )
   Shape(
-    v-for="(shape, index) in shapeList"
+    v-for="(shape, index) in groupShapeList"
     :key="index"
-    :shapeName="shape.name"
+    :shape="shape"
   )
 </template>
 
 <script>
 import UpdateShapeMixin from './UpdateShapeMixin'
 import Shape from './Shape'
+import { mapState } from 'vuex'
+import _ from 'lodash'
 
 export default {
   mixins: [UpdateShapeMixin],
@@ -23,9 +25,12 @@ export default {
     Shape
   },
   computed: {
-    shapeList () {
-      return this.config.shapes
-    }
+    groupShapeList () {
+      return _.filter([...this.shapeList], shape => shape.group === this.config.name)
+    },
+    ...mapState('editor', [
+      'shapeList'
+    ])
   }
 }
 </script>
