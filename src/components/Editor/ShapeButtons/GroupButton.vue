@@ -11,6 +11,8 @@ export default {
     return {
       config: {
         shapes: [],
+        x: 0,
+        y: 0,
         name: 'group',
         type: 'Group'
       }

@@ -31,9 +31,15 @@ export default {
         if (_.includes(value, shape.name)) {
           shape.group = this.selectedShape.name
           shape.draggable = false
+          // shape.offsetX = shape.offsetX + this.selectedShape.x
+          // shape.offsetY = shape.offsetY + this.selectedShape.y
         } else {
-          shape.group = ''
-          shape.draggable = true
+          if (shape.group === this.selectedShape.name) {
+            shape.group = ''
+            shape.draggable = true
+            shape.offsetX = shape.offsetX - this.selectedShape.x
+            shape.offsetY = shape.offsetY - this.selectedShape.y
+          }
         }
         return shape
       })
