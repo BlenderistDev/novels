@@ -1,7 +1,7 @@
 <template lang="pug">
 select(v-model="prop" multiple)
   option(
-    v-for="item in shapeList"
+    v-for="item in shapeListForGroup"
     :value="item.name"
   ) {{ item.name }}
 </template>
@@ -18,7 +18,10 @@ export default {
   computed: {
     ...mapState('editor', [
       'shapeList'
-    ])
+    ]),
+    shapeListForGroup () {
+      return _.filter(this.shapeList, shape => shape.name !== this.selectedShape.name)
+    }
   },
   methods: {
     ...mapMutations('editor', [
@@ -28,18 +31,17 @@ export default {
     prepareValue (value, oldValue) {
       const shapeList = _.cloneDeep(this.shapeList)
       _.map(shapeList, shape => {
-        if (_.includes(value, shape.name)) {
+        if (_.includes(_.difference(value, oldValue), shape.name)) {
           shape.group = this.selectedShape.name
           shape.draggable = false
-          // shape.offsetX = shape.offsetX + this.selectedShape.x
-          // shape.offsetY = shape.offsetY + this.selectedShape.y
-        } else {
-          if (shape.group === this.selectedShape.name) {
-            shape.group = ''
-            shape.draggable = true
-            shape.offsetX = shape.offsetX - this.selectedShape.x
-            shape.offsetY = shape.offsetY - this.selectedShape.y
-          }
+          shape.x = shape.x - this.selectedShape.x
+          shape.y = shape.y - this.selectedShape.y
+        }
+        if (_.includes(_.difference(oldValue, value), shape.name)) {
+          shape.group = ''
+          shape.draggable = true
+          shape.x = shape.x + this.selectedShape.x
+          shape.y = shape.y + this.selectedShape.y
         }
         return shape
       })
